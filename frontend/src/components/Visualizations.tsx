@@ -55,6 +55,8 @@ const shortLabel = (value: unknown) => {
   return text.length > 14 ? `${text.slice(0, 13)}…` : text
 }
 
+const reducedMotion = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
 export default function Visualizations({
   headers,
   rows,
@@ -100,7 +102,7 @@ export default function Visualizations({
         <XAxis {...xAxisProps} />
         <YAxis {...yAxisProps} />
         {tooltip}
-        <Line type="monotone" dataKey="value" name={yName} stroke={color} strokeWidth={2.5} dot={result.points.length < 60} animationDuration={600} />
+        <Line isAnimationActive={!reducedMotion} type="monotone" dataKey="value" name={yName} stroke={color} strokeWidth={2.5} dot={result.points.length < 60} animationDuration={600} />
       </LineChart>
     ) : chartType === 'area' ? (
       <AreaChart data={result.points}>
@@ -114,13 +116,13 @@ export default function Visualizations({
         <XAxis {...xAxisProps} />
         <YAxis {...yAxisProps} />
         {tooltip}
-        <Area type="monotone" dataKey="value" name={yName} stroke={color} strokeWidth={2} fill="url(#areaColor)" animationDuration={600} />
+        <Area isAnimationActive={!reducedMotion} type="monotone" dataKey="value" name={yName} stroke={color} strokeWidth={2} fill="url(#areaColor)" animationDuration={600} />
       </AreaChart>
     ) : chartType === 'pie' ? (
       <PieChart>
         {tooltip}
         <Legend verticalAlign="bottom" />
-        <Pie data={result.points} dataKey="value" nameKey="name" innerRadius="45%" outerRadius="75%" paddingAngle={1} animationDuration={600}>
+        <Pie isAnimationActive={!reducedMotion} data={result.points} dataKey="value" nameKey="name" innerRadius="45%" outerRadius="75%" paddingAngle={1} animationDuration={600}>
           {result.points.map((entry, index) => (
             <Cell key={entry.name} fill={colors[index]} stroke="#fff" />
           ))}
@@ -132,7 +134,7 @@ export default function Visualizations({
         <XAxis type="number" dataKey="x" name={xAxis} tick={axisTick} tickFormatter={tickFormatter} domain={['auto', 'auto']} />
         <YAxis type="number" dataKey="y" name={yAxis} {...yAxisProps} domain={['auto', 'auto']} />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter data={result.scatter} fill={color} fillOpacity={0.6} isAnimationActive={result.scatter.length < 500} />
+        <Scatter data={result.scatter} fill={color} fillOpacity={0.6} isAnimationActive={!reducedMotion && result.scatter.length < 500} />
       </ScatterChart>
     ) : (
       <BarChart data={result.points}>
@@ -140,7 +142,7 @@ export default function Visualizations({
         <XAxis {...xAxisProps} />
         <YAxis {...yAxisProps} />
         {tooltip}
-        <Bar dataKey="value" name={yName} fill={color} radius={[6, 6, 0, 0]} animationDuration={600} />
+        <Bar isAnimationActive={!reducedMotion} dataKey="value" name={yName} fill={color} radius={[6, 6, 0, 0]} animationDuration={600} />
       </BarChart>
     )
 

@@ -10,6 +10,7 @@ import Sidebar, { navItems, SectionKey } from './components/Sidebar'
 import Statistics from './components/Statistics'
 import SQLCompiler from './components/SQLCompiler'
 import Visualizations from './components/Visualizations'
+import { ToastStack, useToasts } from './components/Toasts'
 import { ChartType, DatasetSummary, Row } from './types'
 import { Aggregate } from './lib/chartData'
 import { isNumericColumn } from './lib/numbers'
@@ -63,7 +64,10 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('')
   const [aggregate, setAggregate] = useState<Aggregate>('sum')
   const [isExporting, setIsExporting] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const { toasts, push, dismiss } = useToasts()
   const chartRef = useRef<HTMLDivElement | null>(null)
+  const vizSlotRef = useRef<HTMLDivElement | null>(null)
 
   const datasetSummary: DatasetSummary = useMemo(() => {
     const missing = rows.reduce((sum, row) => sum + headers.reduce((count, key) => {
@@ -71,10 +75,8 @@ function App() {
       return count + (value === '' ? 1 : 0)
     }, 0), 0)
 
-    const numericColumns = headers.filter((key) => rows.some((row) => {
-      const value = row[key]?.toString().trim() ?? ''
-      return value !== '' && !Number.isNaN(Number(value))
-    }))
+    // a column only counts as numeric if every filled cell is a number (before: any single number counted)
+    const numericColumns = headers.filter((key) => isNumericColumn(rows.map((row) => row[key])))
 
     return {
       rows: rows.length,
@@ -134,49 +136,58 @@ function App() {
 
   const handleUpload = async (file: File) => {
     setErrorMessage('')
+    setIsLoading(true)
     try {
       const name = file.name
       const lowerName = name.toLowerCase()
-      let parsedHeaders: string[] = []
-      let parsedRows: Row[] = []
-      let warnings: string[] = []
+      let parsed
 
       if (lowerName.endsWith('.csv')) {
-        const parsed = parseCsvText(await file.text())
-        parsedHeaders = parsed.headers
-        parsedRows = parsed.rows
-        warnings = parsed.warnings
+        parsed = parseCsvText(await file.text())
       } else if (lowerName.endsWith('.xls') || lowerName.endsWith('.xlsx')) {
-        const parsed = parseWorkbook(await file.arrayBuffer())
-        parsedHeaders = parsed.headers
-        parsedRows = parsed.rows
-        warnings = parsed.warnings
+        parsed = parseWorkbook(await file.arrayBuffer())
       } else {
         throw new Error('Unsupported file type. Use CSV or XLSX.')
       }
 
-      if (!parsedHeaders.length) {
+      if (!parsed.headers.length) {
         throw new Error('File must include a header row.')
       }
 
       setFileName(name)
       setFileSize(formatBytes(file.size))
-      setHeaders(parsedHeaders)
-      setRows(parsedRows)
-      setErrorMessage(warnings.join(' '))
+      setHeaders(parsed.headers)
+      setRows(parsed.rows)
+      setErrorMessage(parsed.warnings.join(' '))
       setSearchQuery('')
       setFilterColumn('')
       setFilterValue('')
       setSortField('')
       setPage(1)
-      const defaults = pickChartColumns(parsedHeaders, parsedRows)
+      const defaults = pickChartColumns(parsed.headers, parsed.rows)
       setXAxis(defaults.x)
       setYAxis(defaults.y)
-      setStatsColumn(defaults.y || parsedHeaders[0])
+      setStatsColumn(defaults.y || parsed.headers[0])
       setActiveSection('dashboard')
+      push({ kind: 'success', text: `Loaded ${name}: ${parsed.rows.length.toLocaleString()} rows, ${parsed.headers.length} columns` })
     } catch (error) {
       // keep whatever dataset was loaded before, just show the error
-      setErrorMessage(error instanceof Error ? error.message : 'Upload failed. Please try another file.')
+      const message = error instanceof Error ? error.message : 'Upload failed. Please try another file.'
+      setErrorMessage(message)
+      push({ kind: 'error', text: message })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const loadSample = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.BASE_URL}sample-sales.csv`)
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      const blob = await response.blob()
+      await handleUpload(new File([blob], 'sample-sales.csv', { type: 'text/csv' }))
+    } catch {
+      push({ kind: 'error', text: 'Could not load the sample file. Check your connection and try again.' })
     }
   }
 
@@ -199,7 +210,16 @@ function App() {
   }
 
   const removeRow = (index: number) => {
+    const removed = rows[index]
     setRows((current) => current.filter((_, rowIndex) => rowIndex !== index))
+    push({
+      kind: 'info',
+      text: `Row ${index + 1} deleted`,
+      action: {
+        label: 'Undo',
+        onClick: () => setRows((current) => [...current.slice(0, index), removed, ...current.slice(index)]),
+      },
+    })
   }
 
   const updateCell = (rowIndex: number, header: string, value: string) => {
@@ -220,6 +240,19 @@ function App() {
   }
 
   const removeColumn = (header: string) => {
+    const position = headers.indexOf(header)
+    const values = rows.map((row) => row[header] ?? '')
+    push({
+      kind: 'info',
+      text: `Column "${header}" deleted`,
+      action: {
+        label: 'Undo',
+        onClick: () => {
+          setHeaders((current) => [...current.slice(0, position), header, ...current.slice(position)])
+          setRows((current) => current.map((row, i) => ({ ...row, [header]: values[i] ?? '' })))
+        },
+      },
+    })
     if (sortField === header) setSortField('')
     if (filterColumn === header) {
       setFilterColumn('')
@@ -236,11 +269,13 @@ function App() {
   const exportCsv = () => {
     if (!headers.length) return
     downloadBlob(buildCsv(headers, rows), 'text/csv;charset=utf-8', `${baseName()}.csv`)
+    push({ kind: 'success', text: `Saved ${baseName()}.csv` })
   }
 
   const exportXlsx = () => {
     if (!headers.length) return
     downloadBlob(buildWorkbook(headers, rows), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', `${baseName()}.xlsx`)
+    push({ kind: 'success', text: `Saved ${baseName()}.xlsx` })
   }
 
   const baseName = () => fileName.replace(/\.[^.]+$/, '') || 'dataset'
@@ -265,12 +300,21 @@ function App() {
       link.href = canvas.toDataURL('image/png')
       link.download = `${baseName()}-${chartType}-chart.png`
       link.click()
+      push({ kind: 'success', text: 'Chart saved as PNG' })
+    } catch {
+      push({ kind: 'error', text: 'Could not save the chart image.' })
     } finally {
       setIsExporting(false)
     }
   }
 
   const datasetLoaded = headers.length > 0
+
+  // the off-screen chart shouldn't be reachable with Tab; new page starts at the top
+  useEffect(() => {
+    if (vizSlotRef.current) vizSlotRef.current.inert = activeSection !== 'visualizations'
+    window.scrollTo({ top: 0 })
+  }, [activeSection])
   const closeNav = useCallback(() => setNavOpen(false), [])
 
   return (
@@ -317,7 +361,14 @@ function App() {
 
         <div className="page-panel">
           {activeSection === 'dashboard' && (
-            <Dashboard summary={datasetSummary} onUpload={handleUpload} errorMessage={errorMessage} />
+            <Dashboard
+              summary={datasetSummary}
+              onUpload={handleUpload}
+              onLoadSample={loadSample}
+              errorMessage={errorMessage}
+              isLoading={isLoading}
+              onGoTo={setActiveSection}
+            />
           )}
           {activeSection === 'editor' && (
             <DatasetEditor
@@ -363,7 +414,12 @@ function App() {
             />
           )}
           {/* kept mounted (off screen) so the chart can still be exported from the Export page */}
-          <div className={activeSection === 'visualizations' ? '' : 'offscreen-chart'} aria-hidden={activeSection !== 'visualizations'}>
+          <div
+            key={activeSection === 'visualizations' ? 'viz-on' : 'viz-off'}
+            ref={vizSlotRef}
+            className={activeSection === 'visualizations' ? 'viz-slot' : 'viz-slot offscreen-chart'}
+            aria-hidden={activeSection !== 'visualizations'}
+          >
             <Visualizations
               headers={headers}
               rows={rows}
@@ -388,14 +444,19 @@ function App() {
           {activeSection === 'export' && (
             <ExportPanel
               datasetReady={datasetLoaded}
+              rowCount={rows.length}
+              columnCount={headers.length}
+              chartLabel={chartType === 'histogram' ? `${chartType} of ${xAxis}` : `${chartType} chart of ${yAxis || 'row count'} by ${xAxis}`}
               onDownloadCsv={exportCsv}
               onDownloadXlsx={exportXlsx}
               onDownloadChart={downloadChart}
-              chartReady={datasetLoaded}
+              isExporting={isExporting}
+              onGoToCharts={() => setActiveSection('visualizations')}
             />
           )}
         </div>
       </main>
+      <ToastStack toasts={toasts} onDismiss={dismiss} />
     </div>
   )
 }

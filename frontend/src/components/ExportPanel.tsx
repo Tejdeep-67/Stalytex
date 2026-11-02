@@ -1,46 +1,62 @@
 type Props = {
   datasetReady: boolean
+  rowCount: number
+  columnCount: number
+  chartLabel: string
   onDownloadCsv: () => void
   onDownloadXlsx: () => void
   onDownloadChart: () => void
-  chartReady: boolean
+  isExporting: boolean
+  onGoToCharts: () => void
 }
 
-export default function ExportPanel({ datasetReady, onDownloadCsv, onDownloadXlsx, onDownloadChart, chartReady }: Props) {
+export default function ExportPanel({
+  datasetReady,
+  rowCount,
+  columnCount,
+  chartLabel,
+  onDownloadCsv,
+  onDownloadXlsx,
+  onDownloadChart,
+  isExporting,
+  onGoToCharts,
+}: Props) {
   return (
     <section className="panel-card">
       <div className="section-header">
         <p className="eyebrow">Export</p>
         <h2>Download your dataset and visuals</h2>
         <p className="section-copy">
-          Export your dataset to CSV or XLSX and capture the current chart as a PNG image. All export actions happen in the browser.
+          Exports include your edits. Everything is generated in the browser.
         </p>
       </div>
 
       {datasetReady ? (
-        <div className="export-grid" style={{ marginTop: '24px' }}>
-          <div className="summary-card">
-            <strong>Download table</strong>
-            <span>Export the current dataset as a CSV file.</span>
-            <button type="button" className="primary-action" onClick={onDownloadCsv} style={{ marginTop: '16px' }}>
-              Export CSV
-            </button>
-            <button type="button" className="secondary-action" onClick={onDownloadXlsx} style={{ marginTop: '12px' }}>
-              Export XLSX
-            </button>
+        <div className="export-grid">
+          <div className="export-card">
+            <div className="export-icon" aria-hidden="true">⇩</div>
+            <strong>Data table</strong>
+            <span>{rowCount.toLocaleString()} rows · {columnCount} columns. Number columns are saved as real numbers in XLSX.</span>
+            <div className="export-actions">
+              <button type="button" className="primary-action" onClick={onDownloadCsv}>Export CSV</button>
+              <button type="button" className="secondary-action" onClick={onDownloadXlsx}>Export XLSX</button>
+            </div>
           </div>
-          <div className="summary-card">
-            <strong>Export chart</strong>
-            <span>Save the active visualization as a PNG image.</span>
-            <button type="button" className="primary-action" onClick={onDownloadChart} disabled={!chartReady} style={{ marginTop: '16px' }}>
-              Export PNG
-            </button>
-            {!chartReady && <p className="warning-text" style={{ marginTop: '12px' }}>Open Visualizations first.</p>}
+          <div className="export-card">
+            <div className="export-icon" aria-hidden="true">▤</div>
+            <strong>Current chart</strong>
+            <span>Saves the {chartLabel} as a PNG image.</span>
+            <div className="export-actions">
+              <button type="button" className="primary-action" onClick={onDownloadChart} disabled={isExporting}>
+                {isExporting ? 'Saving…' : 'Export PNG'}
+              </button>
+              <button type="button" className="secondary-action" onClick={onGoToCharts}>Change chart</button>
+            </div>
           </div>
         </div>
       ) : (
-        <div className="empty-section" style={{ minHeight: '200px' }}>
-          <p>Upload a dataset in the Dashboard to enable exports.</p>
+        <div className="empty-section">
+          <p>Upload a dataset on the Dashboard to enable exports.</p>
         </div>
       )}
     </section>
