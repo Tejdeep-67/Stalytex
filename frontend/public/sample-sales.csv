@@ -1,91 +1,91 @@
 order_id,order_date,city,category,product,units,unit_price,discount_pct,revenue,payment
-ORD10001,2025-01-01,Bengaluru,Groceries,Tea Powder 500g,4,240,15,816.0,Cash
+ORD10001,2025-01-01,Bengaluru,Groceries,Tea Powder 500g,4,240,15,816,Cash
 ORD10002,2025-01-01,Vijayawada,Clothing,T-Shirt,1,449,5,426.55,UPI
-ORD10003,2025-01-02,Visakhapatnam,Electronics,Power Bank,3,999,0,2997.0,UPI
-ORD10004,2025-01-02,Hyderabad,Electronics,Keyboard,1,799,,799.0,Cash
-ORD10005,2025-01-02,Visakhapatnam,Groceries,Tea Powder 500g,2,240,0,480.0,UPI
+ORD10003,2025-01-02,Visakhapatnam,Electronics,Power Bank,3,999,0,2997,UPI
+ORD10004,2025-01-02,Hyderabad,Electronics,Keyboard,1,799,,799,Cash
+ORD10005,2025-01-02,Visakhapatnam,Groceries,Tea Powder 500g,2,240,0,480,UPI
 ORD10006,2025-01-03,Guntur,Groceries,Basmati Rice 5kg,4,649,10,2336.4,UPI
 ORD10007,2025-01-03,Bengaluru,Home,Bedsheet,4,699,15,2376.6,Cash
 ORD10008,2025-01-04,Chennai,Home,LED Bulb,6,129,10,696.6,UPI
-ORD10009,2025-01-07,Visakhapatnam,Groceries,Tea Powder 500g,1,240,5,228.0,UPI
-ORD10010,2025-01-07,Chennai,Home,Steel Bottle,7,349,0,2443.0,Cash
+ORD10009,2025-01-07,Visakhapatnam,Groceries,Tea Powder 500g,1,240,5,228,UPI
+ORD10010,2025-01-07,Chennai,Home,Steel Bottle,7,349,0,2443,Cash
 ORD10011,2025-01-08,Vijayawada,Groceries,Basmati Rice 5kg,6,649,5,3699.3,UPI
 ORD10012,2025-01-08,Guntur,Electronics,Keyboard,5,799,15,3395.75,Cash
-ORD10013,2025-01-09,Chennai,Groceries,Tea Powder 500g,7,240,5,1596.0,UPI
+ORD10013,2025-01-09,Chennai,Groceries,Tea Powder 500g,7,240,5,1596,UPI
 ORD10014,2025-01-09,Guntur,Clothing,Cotton Kurta,1,899,10,809.1,Card
 ORD10015,2025-01-09,Hyderabad,Electronics,Earbuds,1,1499,10,1349.1,Card
-ORD10016,2025-01-10,Hyderabad,Clothing,T-Shirt,2,449,,898.0,UPI
+ORD10016,2025-01-10,Hyderabad,Clothing,T-Shirt,2,449,,898,UPI
 ORD10017,2025-01-10,Chennai,Home,Steel Bottle,6,349,10,1884.6,UPI
 ORD10018,2025-01-10,Chennai,Electronics,Earbuds,6,1499,15,7644.9,Cash
 ORD10019,2025-01-10,Vijayawada,Clothing,T-Shirt,1,449,15,381.65,Cash
-ORD10020,2025-01-11,Hyderabad,Groceries,Tea Powder 500g,6,240,10,1296.0,UPI
+ORD10020,2025-01-11,Hyderabad,Groceries,Tea Powder 500g,6,240,10,1296,UPI
 ORD10021,2025-01-11,Hyderabad,Groceries,Sunflower Oil 1L,3,165,10,445.5,UPI
-ORD10022,2025-01-12,Hyderabad,Clothing,T-Shirt,3,449,,1347.0,UPI
-ORD10023,2025-01-12,Bengaluru,Groceries,Tea Powder 500g,4,240,0,960.0,Cash
+ORD10022,2025-01-12,Hyderabad,Clothing,T-Shirt,3,449,,1347,UPI
+ORD10023,2025-01-12,Bengaluru,Groceries,Tea Powder 500g,4,240,0,960,Cash
 ORD10024,2025-01-13,Hyderabad,Groceries,Sunflower Oil 1L,5,165,5,783.75,Cash
 ORD10025,2025-01-13,Vijayawada,Electronics,Keyboard,1,799,5,759.05,Cash
 ORD10026,2025-01-13,Chennai,Clothing,T-Shirt,6,449,5,2559.3,Card
-ORD10027,2025-01-13,Bengaluru,Groceries,Tea Powder 500g,1,240,0,240.0,Cash
+ORD10027,2025-01-13,Bengaluru,Groceries,Tea Powder 500g,1,240,0,240,Cash
 ORD10028,2025-01-14,Hyderabad,Clothing,T-Shirt,3,449,5,1279.65,Card
-ORD10029,2025-01-15,Vijayawada,Electronics,Keyboard,1,799,0,799.0,UPI
+ORD10029,2025-01-15,Vijayawada,Electronics,Keyboard,1,799,0,799,UPI
 ORD10030,2025-01-15,Guntur,Clothing,Cotton Kurta,5,899,15,3820.75,UPI
-ORD10031,2025-01-16,Visakhapatnam,Groceries,Sunflower Oil 1L,3,165,0,495.0,Card
+ORD10031,2025-01-16,Visakhapatnam,Groceries,Sunflower Oil 1L,3,165,0,495,Card
 ORD10032,2025-01-16,Chennai,Clothing,T-Shirt,2,449,15,763.3,UPI
-ORD10033,2025-01-17,Vijayawada,Clothing,Jeans,1,1299,,1299.0,UPI
-ORD10034,2025-01-18,Bengaluru,Home,LED Bulb,2,129,0,258.0,Cash
-ORD10035,2025-01-18,Hyderabad,Groceries,Tea Powder 500g,3,240,5,684.0,UPI
-ORD10036,2025-01-18,Hyderabad,Electronics,Power Bank,3,999,,2997.0,UPI
-ORD10037,2025-01-19,Guntur,Electronics,Earbuds,5,1499,0,7495.0,UPI
+ORD10033,2025-01-17,Vijayawada,Clothing,Jeans,1,1299,,1299,UPI
+ORD10034,2025-01-18,Bengaluru,Home,LED Bulb,2,129,0,258,Cash
+ORD10035,2025-01-18,Hyderabad,Groceries,Tea Powder 500g,3,240,5,684,UPI
+ORD10036,2025-01-18,Hyderabad,Electronics,Power Bank,3,999,,2997,UPI
+ORD10037,2025-01-19,Guntur,Electronics,Earbuds,5,1499,0,7495,UPI
 ORD10038,2025-01-19,Bengaluru,Home,Steel Bottle,2,349,15,593.3,UPI
 ORD10039,2025-01-19,Visakhapatnam,Home,Bedsheet,6,699,5,3984.3,Cash
-ORD10040,2025-01-20,Vijayawada,Clothing,Jeans,1,1299,,1299.0,UPI
-ORD10041,2025-01-20,Visakhapatnam,Home,Steel Bottle,7,349,0,2443.0,UPI
+ORD10040,2025-01-20,Vijayawada,Clothing,Jeans,1,1299,,1299,UPI
+ORD10041,2025-01-20,Visakhapatnam,Home,Steel Bottle,7,349,0,2443,UPI
 ORD10042,2025-01-21,Hyderabad,Groceries,Basmati Rice 5kg,5,649,5,3082.75,UPI
 ORD10043,2025-01-21,Vijayawada,Electronics,Smart Watch,7,2999,10,18893.7,Cash
-ORD10044,2025-01-21,Bengaluru,Electronics,Smart Watch,7,2999,0,20993.0,Card
+ORD10044,2025-01-21,Bengaluru,Electronics,Smart Watch,7,2999,0,20993,Card
 ORD10045,2025-01-21,Vijayawada,Home,Bedsheet,7,699,5,4648.35,UPI
-ORD10046,2025-01-22,Hyderabad,Groceries,Basmati Rice 5kg,3,649,0,1947.0,Card
+ORD10046,2025-01-22,Hyderabad,Groceries,Basmati Rice 5kg,3,649,0,1947,Card
 ORD10047,2025-01-23,Bengaluru,Home,LED Bulb,5,129,5,612.75,UPI
 ORD10048,2025-01-24,Hyderabad,Home,Steel Bottle,4,349,10,1256.4,UPI
-ORD10049,2025-01-25,Visakhapatnam,Clothing,Cotton Kurta,3,899,0,2697.0,UPI
+ORD10049,2025-01-25,Visakhapatnam,Clothing,Cotton Kurta,3,899,0,2697,UPI
 ORD10050,2025-01-26,Bengaluru,Electronics,Power Bank,2,999,5,1898.1,Card
-ORD10051,2025-01-27,Bengaluru,Groceries,Basmati Rice 5kg,6,649,0,3894.0,UPI
-ORD10052,2025-01-27,Hyderabad,Groceries,Tea Powder 500g,1,240,10,216.0,Cash
-ORD10053,2025-01-31,Vijayawada,Home,Steel Bottle,3,349,0,1047.0,Card
+ORD10051,2025-01-27,Bengaluru,Groceries,Basmati Rice 5kg,6,649,0,3894,UPI
+ORD10052,2025-01-27,Hyderabad,Groceries,Tea Powder 500g,1,240,10,216,Cash
+ORD10053,2025-01-31,Vijayawada,Home,Steel Bottle,3,349,0,1047,Card
 ORD10054,2025-02-01,Chennai,Clothing,T-Shirt,5,449,5,2132.75,Card
 ORD10055,2025-02-02,Hyderabad,Clothing,T-Shirt,7,449,10,2828.7,UPI
-ORD10056,2025-02-02,Vijayawada,Groceries,Tea Powder 500g,2,240,5,456.0,Cash
-ORD10057,2025-02-05,Bengaluru,Groceries,Sunflower Oil 1L,7,165,,1155.0,UPI
-ORD10058,2025-02-06,Visakhapatnam,Clothing,Jeans,1,1299,0,1299.0,UPI
-ORD10059,2025-02-06,Vijayawada,Groceries,Tea Powder 500g,7,240,10,1512.0,Card
-ORD10060,2025-02-06,Guntur,Clothing,Cotton Kurta,1,899,0,899.0,Card
-ORD10061,2025-02-07,Vijayawada,Electronics,Smart Watch,1,2999,0,2999.0,Card
+ORD10056,2025-02-02,Vijayawada,Groceries,Tea Powder 500g,2,240,5,456,Cash
+ORD10057,2025-02-05,Bengaluru,Groceries,Sunflower Oil 1L,7,165,,1155,UPI
+ORD10058,2025-02-06,Visakhapatnam,Clothing,Jeans,1,1299,0,1299,UPI
+ORD10059,2025-02-06,Vijayawada,Groceries,Tea Powder 500g,7,240,10,1512,Card
+ORD10060,2025-02-06,Guntur,Clothing,Cotton Kurta,1,899,0,899,Card
+ORD10061,2025-02-07,Vijayawada,Electronics,Smart Watch,1,2999,0,2999,Card
 ORD10062,2025-02-08,Chennai,Electronics,Power Bank,1,999,5,949.05,UPI
 ORD10063,2025-02-09,Hyderabad,Clothing,Cotton Kurta,5,899,15,3820.75,UPI
 ORD10064,2025-02-11,Chennai,Home,Steel Bottle,6,349,10,1884.6,Cash
-ORD10065,2025-02-11,Vijayawada,Home,Bedsheet,3,699,0,2097.0,Card
-ORD10066,2025-02-11,Visakhapatnam,Groceries,Tea Powder 500g,7,240,5,1596.0,Cash
-ORD10067,2025-02-12,Guntur,Groceries,Tea Powder 500g,2,240,0,480.0,Cash
+ORD10065,2025-02-11,Vijayawada,Home,Bedsheet,3,699,0,2097,Card
+ORD10066,2025-02-11,Visakhapatnam,Groceries,Tea Powder 500g,7,240,5,1596,Cash
+ORD10067,2025-02-12,Guntur,Groceries,Tea Powder 500g,2,240,0,480,Cash
 ORD10068,2025-02-12,Chennai,Home,LED Bulb,6,129,10,696.6,UPI
-ORD10069,2025-02-12,Guntur,Electronics,Earbuds,5,1499,0,7495.0,UPI
+ORD10069,2025-02-12,Guntur,Electronics,Earbuds,5,1499,0,7495,UPI
 ORD10070,2025-02-13,Bengaluru,Home,LED Bulb,3,129,15,328.95,UPI
 ORD10071,2025-02-13,Bengaluru,Electronics,Smart Watch,4,2999,5,11396.2,Card
-ORD10072,2025-02-16,Bengaluru,Groceries,Sunflower Oil 1L,4,165,15,561.0,UPI
-ORD10073,2025-02-18,Hyderabad,Clothing,Jeans,3,1299,,3897.0,Card
+ORD10072,2025-02-16,Bengaluru,Groceries,Sunflower Oil 1L,4,165,15,561,UPI
+ORD10073,2025-02-18,Hyderabad,Clothing,Jeans,3,1299,,3897,Card
 ORD10074,2025-02-18,Vijayawada,Electronics,Smart Watch,7,2999,10,18893.7,UPI
-ORD10075,2025-02-18,Vijayawada,Electronics,Smart Watch,1,2999,0,2999.0,UPI
+ORD10075,2025-02-18,Vijayawada,Electronics,Smart Watch,1,2999,0,2999,UPI
 ORD10076,2025-02-19,Hyderabad,Clothing,T-Shirt,4,449,10,1616.4,Card
-ORD10077,2025-02-20,Chennai,Electronics,Earbuds,7,1499,,10493.0,UPI
-ORD10078,2025-02-21,Guntur,Home,LED Bulb,1,129,0,129.0,UPI
+ORD10077,2025-02-20,Chennai,Electronics,Earbuds,7,1499,,10493,UPI
+ORD10078,2025-02-21,Guntur,Home,LED Bulb,1,129,0,129,UPI
 ORD10079,2025-02-22,Hyderabad,Clothing,Jeans,3,1299,5,3702.15,Cash
-ORD10080,2025-02-22,Hyderabad,Electronics,Keyboard,6,799,0,4794.0,UPI
-ORD10081,2025-02-23,Vijayawada,Clothing,T-Shirt,4,449,0,1796.0,Cash
+ORD10080,2025-02-22,Hyderabad,Electronics,Keyboard,6,799,0,4794,UPI
+ORD10081,2025-02-23,Vijayawada,Clothing,T-Shirt,4,449,0,1796,Cash
 ORD10082,2025-02-23,Chennai,Clothing,Jeans,1,1299,5,1234.05,UPI
 ORD10083,2025-02-23,Hyderabad,Home,LED Bulb,1,129,5,122.55,UPI
 ORD10084,2025-02-23,Visakhapatnam,Clothing,Cotton Kurta,5,899,5,4270.25,UPI
-ORD10085,2025-02-23,Visakhapatnam,Clothing,Cotton Kurta,6,899,0,5394.0,UPI
+ORD10085,2025-02-23,Visakhapatnam,Clothing,Cotton Kurta,6,899,0,5394,UPI
 ORD10086,2025-02-24,Chennai,Clothing,T-Shirt,6,449,10,2424.6,Cash
-ORD10087,2025-02-25,Vijayawada,Electronics,Smart Watch,5,2999,0,14995.0,UPI
+ORD10087,2025-02-25,Vijayawada,Electronics,Smart Watch,5,2999,0,14995,UPI
 ORD10088,2025-02-25,Chennai,Electronics,Keyboard,5,799,10,3595.5,UPI
 ORD10089,2025-02-25,Visakhapatnam,Groceries,Basmati Rice 5kg,5,649,5,3082.75,Card
 ORD10090,2025-02-27,Guntur,Home,Bedsheet,2,699,10,1258.2,Card
@@ -93,509 +93,509 @@ ORD10091,2025-02-28,Chennai,Electronics,Smart Watch,1,2999,15,2549.15,Card
 ORD10092,2025-02-28,Bengaluru,Home,Steel Bottle,2,349,5,663.1,UPI
 ORD10093,2025-03-03,Chennai,Home,Bedsheet,2,699,5,1328.1,Cash
 ORD10094,2025-03-06,Guntur,Electronics,Smart Watch,7,2999,10,18893.7,Cash
-ORD10095,2025-03-06,Bengaluru,Home,LED Bulb,2,129,0,258.0,Card
+ORD10095,2025-03-06,Bengaluru,Home,LED Bulb,2,129,0,258,Card
 ORD10096,2025-03-07,Hyderabad,Home,Steel Bottle,1,349,5,331.55,Card
-ORD10097,2025-03-07,Guntur,Groceries,Tea Powder 500g,6,240,0,1440.0,Card
-ORD10098,2025-03-09,Chennai,Groceries,Basmati Rice 5kg,5,649,,3245.0,Cash
-ORD10099,2025-03-09,Bengaluru,Groceries,Tea Powder 500g,7,240,0,1680.0,Cash
-ORD10100,2025-03-09,Vijayawada,Clothing,Cotton Kurta,1,899,,899.0,UPI
-ORD10101,2025-03-09,Bengaluru,Groceries,Tea Powder 500g,3,240,5,684.0,Cash
+ORD10097,2025-03-07,Guntur,Groceries,Tea Powder 500g,6,240,0,1440,Card
+ORD10098,2025-03-09,Chennai,Groceries,Basmati Rice 5kg,5,649,,3245,Cash
+ORD10099,2025-03-09,Bengaluru,Groceries,Tea Powder 500g,7,240,0,1680,Cash
+ORD10100,2025-03-09,Vijayawada,Clothing,Cotton Kurta,1,899,,899,UPI
+ORD10101,2025-03-09,Bengaluru,Groceries,Tea Powder 500g,3,240,5,684,Cash
 ORD10102,2025-03-09,Chennai,Home,Bedsheet,5,699,15,2970.75,UPI
-ORD10103,2025-03-10,Chennai,Home,Steel Bottle,6,349,,2094.0,UPI
-ORD10104,2025-03-11,Visakhapatnam,Electronics,Keyboard,2,799,,1598.0,UPI
-ORD10105,2025-03-11,Vijayawada,Groceries,Basmati Rice 5kg,7,649,0,4543.0,Card
+ORD10103,2025-03-10,Chennai,Home,Steel Bottle,6,349,,2094,UPI
+ORD10104,2025-03-11,Visakhapatnam,Electronics,Keyboard,2,799,,1598,UPI
+ORD10105,2025-03-11,Vijayawada,Groceries,Basmati Rice 5kg,7,649,0,4543,Card
 ORD10106,2025-03-11,Bengaluru,Electronics,Earbuds,4,1499,10,5396.4,UPI
-ORD10107,2025-03-11,Vijayawada,Clothing,T-Shirt,3,449,0,1347.0,UPI
-ORD10108,2025-03-12,Hyderabad,Electronics,Power Bank,2,999,,1998.0,Cash
+ORD10107,2025-03-11,Vijayawada,Clothing,T-Shirt,3,449,0,1347,UPI
+ORD10108,2025-03-12,Hyderabad,Electronics,Power Bank,2,999,,1998,Cash
 ORD10109,2025-03-13,Bengaluru,Home,Bedsheet,4,699,10,2516.4,Card
 ORD10110,2025-03-13,Visakhapatnam,Home,Bedsheet,5,699,5,3320.25,UPI
-ORD10111,2025-03-13,Vijayawada,Groceries,Tea Powder 500g,7,240,5,1596.0,Card
+ORD10111,2025-03-13,Vijayawada,Groceries,Tea Powder 500g,7,240,5,1596,Card
 ORD10112,2025-03-14,Visakhapatnam,Clothing,Cotton Kurta,7,899,10,5663.7,Cash
-ORD10113,2025-03-15,Vijayawada,Electronics,Smart Watch,3,2999,,8997.0,UPI
-ORD10114,2025-03-15,Guntur,Electronics,Smart Watch,3,2999,0,8997.0,UPI
+ORD10113,2025-03-15,Vijayawada,Electronics,Smart Watch,3,2999,,8997,UPI
+ORD10114,2025-03-15,Guntur,Electronics,Smart Watch,3,2999,0,8997,UPI
 ORD10115,2025-03-16,Bengaluru,Electronics,Keyboard,6,799,5,4554.3,Card
-ORD10116,2025-03-17,Vijayawada,Home,Steel Bottle,3,349,,1047.0,Card
-ORD10117,2025-03-18,Guntur,Electronics,Keyboard,4,799,0,3196.0,UPI
-ORD10118,2025-03-19,Chennai,Electronics,Keyboard,4,799,0,3196.0,UPI
+ORD10116,2025-03-17,Vijayawada,Home,Steel Bottle,3,349,,1047,Card
+ORD10117,2025-03-18,Guntur,Electronics,Keyboard,4,799,0,3196,UPI
+ORD10118,2025-03-19,Chennai,Electronics,Keyboard,4,799,0,3196,UPI
 ORD10119,2025-03-19,Hyderabad,Home,Bedsheet,1,699,5,664.05,UPI
-ORD10120,2025-03-20,Vijayawada,Electronics,Smart Watch,5,2999,0,14995.0,UPI
-ORD10121,2025-03-20,Chennai,Electronics,Earbuds,7,1499,,10493.0,Cash
+ORD10120,2025-03-20,Vijayawada,Electronics,Smart Watch,5,2999,0,14995,UPI
+ORD10121,2025-03-20,Chennai,Electronics,Earbuds,7,1499,,10493,Cash
 ORD10122,2025-03-20,Vijayawada,Groceries,Basmati Rice 5kg,5,649,5,3082.75,Card
-ORD10123,2025-03-20,Bengaluru,Electronics,Smart Watch,1,2999,0,2999.0,UPI
-ORD10124,2025-03-21,Visakhapatnam,Home,LED Bulb,7,129,0,903.0,Cash
-ORD10125,2025-03-21,Bengaluru,Groceries,Tea Powder 500g,2,240,,480.0,Cash
+ORD10123,2025-03-20,Bengaluru,Electronics,Smart Watch,1,2999,0,2999,UPI
+ORD10124,2025-03-21,Visakhapatnam,Home,LED Bulb,7,129,0,903,Cash
+ORD10125,2025-03-21,Bengaluru,Groceries,Tea Powder 500g,2,240,,480,Cash
 ORD10126,2025-03-22,Vijayawada,Electronics,Keyboard,5,799,10,3595.5,Cash
 ORD10127,2025-03-22,Visakhapatnam,Clothing,Cotton Kurta,3,899,5,2562.15,Cash
-ORD10128,2025-03-23,Visakhapatnam,Groceries,Sunflower Oil 1L,1,165,0,165.0,UPI
-ORD10129,2025-03-24,Hyderabad,Clothing,T-Shirt,1,449,0,449.0,Cash
-ORD10130,2025-03-24,Vijayawada,Home,Steel Bottle,7,349,,2443.0,UPI
-ORD10131,2025-03-25,Hyderabad,Groceries,Tea Powder 500g,6,240,10,1296.0,Card
+ORD10128,2025-03-23,Visakhapatnam,Groceries,Sunflower Oil 1L,1,165,0,165,UPI
+ORD10129,2025-03-24,Hyderabad,Clothing,T-Shirt,1,449,0,449,Cash
+ORD10130,2025-03-24,Vijayawada,Home,Steel Bottle,7,349,,2443,UPI
+ORD10131,2025-03-25,Hyderabad,Groceries,Tea Powder 500g,6,240,10,1296,Card
 ORD10132,2025-03-25,Hyderabad,Electronics,Keyboard,1,799,15,679.15,UPI
-ORD10133,2025-03-27,Chennai,Clothing,Cotton Kurta,2,899,0,1798.0,UPI
-ORD10134,2025-03-27,Vijayawada,Electronics,Smart Watch,4,2999,0,11996.0,Card
-ORD10135,2025-03-27,Vijayawada,Clothing,T-Shirt,6,449,0,2694.0,Card
+ORD10133,2025-03-27,Chennai,Clothing,Cotton Kurta,2,899,0,1798,UPI
+ORD10134,2025-03-27,Vijayawada,Electronics,Smart Watch,4,2999,0,11996,Card
+ORD10135,2025-03-27,Vijayawada,Clothing,T-Shirt,6,449,0,2694,Card
 ORD10136,2025-03-29,Chennai,Electronics,Keyboard,1,799,15,679.15,Cash
 ORD10137,2025-03-29,Vijayawada,Groceries,Basmati Rice 5kg,2,649,10,1168.2,Cash
-ORD10138,2025-03-30,Hyderabad,Electronics,Earbuds,1,1499,0,1499.0,UPI
+ORD10138,2025-03-30,Hyderabad,Electronics,Earbuds,1,1499,0,1499,UPI
 ORD10139,2025-03-30,Bengaluru,Electronics,Earbuds,6,1499,5,8544.3,UPI
 ORD10140,2025-03-31,Bengaluru,Home,Steel Bottle,2,349,10,628.2,Card
-ORD10141,2025-03-31,Bengaluru,Electronics,Power Bank,3,999,0,2997.0,Cash
+ORD10141,2025-03-31,Bengaluru,Electronics,Power Bank,3,999,0,2997,Cash
 ORD10142,2025-03-31,Guntur,Clothing,Jeans,6,1299,15,6624.9,UPI
-ORD10143,2025-03-31,Vijayawada,Home,Bedsheet,3,699,0,2097.0,Cash
+ORD10143,2025-03-31,Vijayawada,Home,Bedsheet,3,699,0,2097,Cash
 ORD10144,2025-04-01,Bengaluru,Electronics,Power Bank,6,999,15,5094.9,UPI
-ORD10145,2025-04-01,Guntur,Groceries,Basmati Rice 5kg,7,649,0,4543.0,UPI
+ORD10145,2025-04-01,Guntur,Groceries,Basmati Rice 5kg,7,649,0,4543,UPI
 ORD10146,2025-04-02,Bengaluru,Groceries,Basmati Rice 5kg,3,649,5,1849.65,Cash
 ORD10147,2025-04-02,Chennai,Home,LED Bulb,6,129,15,657.9,Cash
-ORD10148,2025-04-03,Visakhapatnam,Clothing,Cotton Kurta,5,899,0,4495.0,UPI
-ORD10149,2025-04-03,Guntur,Groceries,Basmati Rice 5kg,3,649,0,1947.0,Cash
+ORD10148,2025-04-03,Visakhapatnam,Clothing,Cotton Kurta,5,899,0,4495,UPI
+ORD10149,2025-04-03,Guntur,Groceries,Basmati Rice 5kg,3,649,0,1947,Cash
 ORD10150,2025-04-03,Hyderabad,Groceries,Basmati Rice 5kg,6,649,10,3504.6,UPI
 ORD10151,2025-04-04,Bengaluru,Clothing,Jeans,2,1299,15,2208.3,Card
-ORD10152,2025-04-05,Guntur,Electronics,Smart Watch,2,2999,0,5998.0,UPI
+ORD10152,2025-04-05,Guntur,Electronics,Smart Watch,2,2999,0,5998,UPI
 ORD10153,2025-04-05,Bengaluru,Home,Bedsheet,7,699,5,4648.35,UPI
-ORD10154,2025-04-05,Visakhapatnam,Groceries,Tea Powder 500g,2,240,0,480.0,Cash
+ORD10154,2025-04-05,Visakhapatnam,Groceries,Tea Powder 500g,2,240,0,480,Cash
 ORD10155,2025-04-05,Chennai,Electronics,Smart Watch,6,2999,10,16194.6,Cash
 ORD10156,2025-04-06,Vijayawada,Electronics,Earbuds,7,1499,15,8919.05,UPI
 ORD10157,2025-04-07,Guntur,Electronics,Smart Watch,5,2999,5,14245.25,UPI
-ORD10158,2025-04-07,Hyderabad,Home,LED Bulb,3,129,0,387.0,UPI
+ORD10158,2025-04-07,Hyderabad,Home,LED Bulb,3,129,0,387,UPI
 ORD10159,2025-04-08,Visakhapatnam,Electronics,Earbuds,3,1499,10,4047.3,UPI
 ORD10160,2025-04-09,Chennai,Electronics,Smart Watch,3,2999,5,8547.15,Cash
-ORD10161,2025-04-09,Vijayawada,Electronics,Earbuds,4,1499,0,5996.0,UPI
+ORD10161,2025-04-09,Vijayawada,Electronics,Earbuds,4,1499,0,5996,UPI
 ORD10162,2025-04-10,Chennai,Groceries,Sunflower Oil 1L,3,165,10,445.5,UPI
 ORD10163,2025-04-10,Chennai,Clothing,Jeans,3,1299,5,3702.15,UPI
-ORD10164,2025-04-10,Bengaluru,Electronics,Smart Watch,7,2999,0,20993.0,UPI
-ORD10165,2025-04-11,Chennai,Groceries,Basmati Rice 5kg,3,649,0,1947.0,Cash
+ORD10164,2025-04-10,Bengaluru,Electronics,Smart Watch,7,2999,0,20993,UPI
+ORD10165,2025-04-11,Chennai,Groceries,Basmati Rice 5kg,3,649,0,1947,Cash
 ORD10166,2025-04-11,Visakhapatnam,Home,Steel Bottle,3,349,15,889.95,Card
-ORD10167,2025-04-11,Chennai,Clothing,T-Shirt,5,449,,2245.0,UPI
-ORD10168,2025-04-11,Hyderabad,Clothing,Jeans,7,1299,0,9093.0,Cash
+ORD10167,2025-04-11,Chennai,Clothing,T-Shirt,5,449,,2245,UPI
+ORD10168,2025-04-11,Hyderabad,Clothing,Jeans,7,1299,0,9093,Cash
 ORD10169,2025-04-11,Chennai,Clothing,T-Shirt,4,449,15,1526.6,UPI
 ORD10170,2025-04-12,Bengaluru,Electronics,Power Bank,6,999,10,5394.6,Card
 ORD10171,2025-04-13,Vijayawada,Electronics,Keyboard,1,799,5,759.05,Card
 ORD10172,2025-04-13,Chennai,Home,Bedsheet,4,699,5,2656.2,UPI
-ORD10173,2025-04-13,Guntur,Groceries,Basmati Rice 5kg,3,649,0,1947.0,UPI
-ORD10174,2025-04-13,Guntur,Home,Steel Bottle,6,349,0,2094.0,UPI
+ORD10173,2025-04-13,Guntur,Groceries,Basmati Rice 5kg,3,649,0,1947,UPI
+ORD10174,2025-04-13,Guntur,Home,Steel Bottle,6,349,0,2094,UPI
 ORD10175,2025-04-14,Bengaluru,Home,Steel Bottle,4,349,5,1326.2,UPI
 ORD10176,2025-04-14,Vijayawada,Home,Bedsheet,4,699,10,2516.4,UPI
 ORD10177,2025-04-14,Bengaluru,Home,Steel Bottle,6,349,15,1779.9,Card
-ORD10178,2025-04-15,Visakhapatnam,Groceries,Tea Powder 500g,5,240,10,1080.0,Card
-ORD10179,2025-04-16,Hyderabad,Electronics,Earbuds,5,1499,,7495.0,Cash
+ORD10178,2025-04-15,Visakhapatnam,Groceries,Tea Powder 500g,5,240,10,1080,Card
+ORD10179,2025-04-16,Hyderabad,Electronics,Earbuds,5,1499,,7495,Cash
 ORD10180,2025-04-17,Guntur,Home,Bedsheet,1,699,5,664.05,Cash
-ORD10181,2025-04-18,Hyderabad,Home,LED Bulb,5,129,0,645.0,UPI
+ORD10181,2025-04-18,Hyderabad,Home,LED Bulb,5,129,0,645,UPI
 ORD10182,2025-04-18,Bengaluru,Home,LED Bulb,3,129,10,348.3,UPI
-ORD10183,2025-04-18,Hyderabad,Home,Bedsheet,6,699,0,4194.0,Cash
+ORD10183,2025-04-18,Hyderabad,Home,Bedsheet,6,699,0,4194,Cash
 ORD10184,2025-04-18,Visakhapatnam,Electronics,Keyboard,5,799,15,3395.75,UPI
-ORD10185,2025-04-18,Hyderabad,Groceries,Tea Powder 500g,6,240,0,1440.0,UPI
+ORD10185,2025-04-18,Hyderabad,Groceries,Tea Powder 500g,6,240,0,1440,UPI
 ORD10186,2025-04-19,Guntur,Electronics,Smart Watch,1,2999,5,2849.05,Card
 ORD10187,2025-04-20,Guntur,Home,Bedsheet,1,699,10,629.1,Card
 ORD10188,2025-04-20,Chennai,Groceries,Sunflower Oil 1L,2,165,15,280.5,UPI
-ORD10189,2025-04-21,Bengaluru,Electronics,Power Bank,6,999,,5994.0,Cash
-ORD10190,2025-04-21,Chennai,Home,LED Bulb,7,129,0,903.0,Card
-ORD10191,2025-04-22,Hyderabad,Electronics,Keyboard,4,799,0,3196.0,Card
-ORD10192,2025-04-22,Hyderabad,Clothing,Cotton Kurta,7,899,0,6293.0,UPI
+ORD10189,2025-04-21,Bengaluru,Electronics,Power Bank,6,999,,5994,Cash
+ORD10190,2025-04-21,Chennai,Home,LED Bulb,7,129,0,903,Card
+ORD10191,2025-04-22,Hyderabad,Electronics,Keyboard,4,799,0,3196,Card
+ORD10192,2025-04-22,Hyderabad,Clothing,Cotton Kurta,7,899,0,6293,UPI
 ORD10193,2025-04-23,Hyderabad,Home,LED Bulb,5,129,15,548.25,UPI
 ORD10194,2025-04-23,Visakhapatnam,Home,LED Bulb,4,129,10,464.4,Card
-ORD10195,2025-04-24,Guntur,Groceries,Tea Powder 500g,4,240,0,960.0,UPI
+ORD10195,2025-04-24,Guntur,Groceries,Tea Powder 500g,4,240,0,960,UPI
 ORD10196,2025-04-24,Chennai,Groceries,Sunflower Oil 1L,1,165,10,148.5,UPI
-ORD10197,2025-04-24,Hyderabad,Electronics,Keyboard,7,799,,5593.0,UPI
-ORD10198,2025-04-24,Hyderabad,Clothing,Cotton Kurta,1,899,0,899.0,Card
-ORD10199,2025-04-25,Guntur,Clothing,Jeans,4,1299,0,5196.0,UPI
+ORD10197,2025-04-24,Hyderabad,Electronics,Keyboard,7,799,,5593,UPI
+ORD10198,2025-04-24,Hyderabad,Clothing,Cotton Kurta,1,899,0,899,Card
+ORD10199,2025-04-25,Guntur,Clothing,Jeans,4,1299,0,5196,UPI
 ORD10200,2025-04-25,Vijayawada,Electronics,Power Bank,4,999,10,3596.4,Cash
-ORD10201,2025-04-27,Bengaluru,Clothing,Cotton Kurta,6,899,0,5394.0,UPI
+ORD10201,2025-04-27,Bengaluru,Clothing,Cotton Kurta,6,899,0,5394,UPI
 ORD10202,2025-04-28,Chennai,Home,Steel Bottle,3,349,10,942.3,UPI
-ORD10203,2025-04-29,Visakhapatnam,Groceries,Sunflower Oil 1L,4,165,5,627.0,UPI
+ORD10203,2025-04-29,Visakhapatnam,Groceries,Sunflower Oil 1L,4,165,5,627,UPI
 ORD10204,2025-04-30,Bengaluru,Clothing,Jeans,2,1299,5,2468.1,Cash
 ORD10205,2025-04-30,Guntur,Home,LED Bulb,1,129,5,122.55,UPI
 ORD10206,2025-04-30,Guntur,Clothing,Cotton Kurta,3,899,5,2562.15,Cash
-ORD10207,2025-04-30,Hyderabad,Groceries,Tea Powder 500g,2,240,,480.0,UPI
+ORD10207,2025-04-30,Hyderabad,Groceries,Tea Powder 500g,2,240,,480,UPI
 ORD10208,2025-04-30,Guntur,Electronics,Earbuds,1,1499,5,1424.05,UPI
 ORD10209,2025-04-30,Guntur,Electronics,Keyboard,4,799,10,2876.4,UPI
-ORD10210,2025-05-02,Guntur,Groceries,Sunflower Oil 1L,1,165,0,165.0,UPI
+ORD10210,2025-05-02,Guntur,Groceries,Sunflower Oil 1L,1,165,0,165,UPI
 ORD10211,2025-05-03,Chennai,Clothing,T-Shirt,1,449,10,404.1,Cash
-ORD10212,2025-05-04,Bengaluru,Home,LED Bulb,1,129,,129.0,UPI
-ORD10213,2025-05-05,Vijayawada,Home,Bedsheet,6,699,,4194.0,UPI
-ORD10214,2025-05-05,Guntur,Home,Bedsheet,4,699,,2796.0,UPI
-ORD10215,2025-05-07,Chennai,Groceries,Tea Powder 500g,6,240,10,1296.0,Card
-ORD10216,2025-05-07,Hyderabad,Electronics,Smart Watch,1,2999,,2999.0,Cash
-ORD10217,2025-05-07,Vijayawada,Home,Steel Bottle,1,349,0,349.0,Cash
-ORD10218,2025-05-07,Visakhapatnam,Groceries,Sunflower Oil 1L,1,165,,165.0,Card
-ORD10219,2025-05-07,Guntur,Clothing,T-Shirt,4,449,,1796.0,Cash
+ORD10212,2025-05-04,Bengaluru,Home,LED Bulb,1,129,,129,UPI
+ORD10213,2025-05-05,Vijayawada,Home,Bedsheet,6,699,,4194,UPI
+ORD10214,2025-05-05,Guntur,Home,Bedsheet,4,699,,2796,UPI
+ORD10215,2025-05-07,Chennai,Groceries,Tea Powder 500g,6,240,10,1296,Card
+ORD10216,2025-05-07,Hyderabad,Electronics,Smart Watch,1,2999,,2999,Cash
+ORD10217,2025-05-07,Vijayawada,Home,Steel Bottle,1,349,0,349,Cash
+ORD10218,2025-05-07,Visakhapatnam,Groceries,Sunflower Oil 1L,1,165,,165,Card
+ORD10219,2025-05-07,Guntur,Clothing,T-Shirt,4,449,,1796,Cash
 ORD10220,2025-05-09,Hyderabad,Clothing,Jeans,2,1299,5,2468.1,Cash
-ORD10221,2025-05-09,Guntur,Home,LED Bulb,4,129,,516.0,Cash
+ORD10221,2025-05-09,Guntur,Home,LED Bulb,4,129,,516,Cash
 ORD10222,2025-05-09,Bengaluru,Electronics,Keyboard,6,799,10,4314.6,UPI
-ORD10223,2025-05-11,Chennai,Groceries,Tea Powder 500g,7,240,5,1596.0,UPI
+ORD10223,2025-05-11,Chennai,Groceries,Tea Powder 500g,7,240,5,1596,UPI
 ORD10224,2025-05-11,Visakhapatnam,Clothing,T-Shirt,6,449,15,2289.9,UPI
-ORD10225,2025-05-11,Visakhapatnam,Electronics,Smart Watch,2,2999,0,5998.0,UPI
-ORD10226,2025-05-12,Vijayawada,Groceries,Sunflower Oil 1L,5,165,0,825.0,UPI
-ORD10227,2025-05-12,Hyderabad,Groceries,Basmati Rice 5kg,6,649,,3894.0,Card
+ORD10225,2025-05-11,Visakhapatnam,Electronics,Smart Watch,2,2999,0,5998,UPI
+ORD10226,2025-05-12,Vijayawada,Groceries,Sunflower Oil 1L,5,165,0,825,UPI
+ORD10227,2025-05-12,Hyderabad,Groceries,Basmati Rice 5kg,6,649,,3894,Card
 ORD10228,2025-05-12,Vijayawada,Electronics,Keyboard,6,799,10,4314.6,UPI
-ORD10229,2025-05-13,Bengaluru,Clothing,Jeans,1,1299,,1299.0,UPI
+ORD10229,2025-05-13,Bengaluru,Clothing,Jeans,1,1299,,1299,UPI
 ORD10230,2025-05-13,Vijayawada,Clothing,T-Shirt,6,449,10,2424.6,UPI
 ORD10231,2025-05-14,Hyderabad,Home,Bedsheet,1,699,10,629.1,UPI
-ORD10232,2025-05-16,Visakhapatnam,Electronics,Keyboard,4,799,,3196.0,Cash
-ORD10233,2025-05-16,Hyderabad,Groceries,Sunflower Oil 1L,6,165,10,891.0,Card
+ORD10232,2025-05-16,Visakhapatnam,Electronics,Keyboard,4,799,,3196,Cash
+ORD10233,2025-05-16,Hyderabad,Groceries,Sunflower Oil 1L,6,165,10,891,Card
 ORD10234,2025-05-16,Chennai,Groceries,Sunflower Oil 1L,3,165,5,470.25,UPI
-ORD10235,2025-05-17,Hyderabad,Home,Bedsheet,6,699,,4194.0,UPI
+ORD10235,2025-05-17,Hyderabad,Home,Bedsheet,6,699,,4194,UPI
 ORD10236,2025-05-18,Hyderabad,Electronics,Earbuds,5,1499,10,6745.5,UPI
-ORD10237,2025-05-18,Vijayawada,Groceries,Sunflower Oil 1L,6,165,0,990.0,Cash
-ORD10238,2025-05-18,Visakhapatnam,Electronics,Earbuds,4,1499,0,5996.0,Card
+ORD10237,2025-05-18,Vijayawada,Groceries,Sunflower Oil 1L,6,165,0,990,Cash
+ORD10238,2025-05-18,Visakhapatnam,Electronics,Earbuds,4,1499,0,5996,Card
 ORD10239,2025-05-18,Chennai,Groceries,Basmati Rice 5kg,5,649,5,3082.75,UPI
 ORD10240,2025-05-19,Chennai,Home,LED Bulb,4,129,5,490.2,Cash
-ORD10241,2025-05-19,Chennai,Clothing,Cotton Kurta,4,899,0,3596.0,UPI
-ORD10242,2025-05-23,Visakhapatnam,Clothing,Jeans,3,1299,0,3897.0,Cash
+ORD10241,2025-05-19,Chennai,Clothing,Cotton Kurta,4,899,0,3596,UPI
+ORD10242,2025-05-23,Visakhapatnam,Clothing,Jeans,3,1299,0,3897,Cash
 ORD10243,2025-05-24,Visakhapatnam,Electronics,Smart Watch,1,2999,5,2849.05,Cash
 ORD10244,2025-05-25,Hyderabad,Home,Bedsheet,6,699,10,3774.6,Card
 ORD10245,2025-05-25,Visakhapatnam,Home,Bedsheet,5,699,15,2970.75,UPI
-ORD10246,2025-05-26,Visakhapatnam,Electronics,Smart Watch,1,2999,,2999.0,Card
+ORD10246,2025-05-26,Visakhapatnam,Electronics,Smart Watch,1,2999,,2999,Card
 ORD10247,2025-05-27,Visakhapatnam,Clothing,Jeans,2,1299,10,2338.2,UPI
-ORD10248,2025-05-27,Visakhapatnam,Clothing,Jeans,1,1299,0,1299.0,Card
-ORD10249,2025-05-28,Guntur,Groceries,Tea Powder 500g,2,240,0,480.0,UPI
-ORD10250,2025-05-28,Chennai,Clothing,Jeans,5,1299,,6495.0,Cash
+ORD10248,2025-05-27,Visakhapatnam,Clothing,Jeans,1,1299,0,1299,Card
+ORD10249,2025-05-28,Guntur,Groceries,Tea Powder 500g,2,240,0,480,UPI
+ORD10250,2025-05-28,Chennai,Clothing,Jeans,5,1299,,6495,Cash
 ORD10251,2025-05-29,Visakhapatnam,Electronics,Power Bank,2,999,15,1698.3,UPI
-ORD10252,2025-05-29,Chennai,Home,LED Bulb,3,129,0,387.0,Card
+ORD10252,2025-05-29,Chennai,Home,LED Bulb,3,129,0,387,Card
 ORD10253,2025-05-29,Chennai,Clothing,T-Shirt,6,449,15,2289.9,Card
 ORD10254,2025-05-29,Vijayawada,Groceries,Basmati Rice 5kg,5,649,15,2758.25,UPI
 ORD10255,2025-05-29,Vijayawada,Electronics,Smart Watch,2,2999,10,5398.2,Cash
 ORD10256,2025-05-30,Vijayawada,Groceries,Sunflower Oil 1L,1,165,5,156.75,UPI
-ORD10257,2025-05-30,Visakhapatnam,Groceries,Tea Powder 500g,1,240,10,216.0,UPI
-ORD10258,2025-05-30,Hyderabad,Groceries,Basmati Rice 5kg,4,649,0,2596.0,Cash
+ORD10257,2025-05-30,Visakhapatnam,Groceries,Tea Powder 500g,1,240,10,216,UPI
+ORD10258,2025-05-30,Hyderabad,Groceries,Basmati Rice 5kg,4,649,0,2596,Cash
 ORD10259,2025-05-30,Vijayawada,Clothing,T-Shirt,2,449,10,808.2,Cash
-ORD10260,2025-05-30,Guntur,Clothing,T-Shirt,4,449,0,1796.0,Card
-ORD10261,2025-05-31,Vijayawada,Groceries,Tea Powder 500g,6,240,5,1368.0,Cash
-ORD10262,2025-06-01,Guntur,Electronics,Power Bank,7,999,0,6993.0,UPI
-ORD10263,2025-06-02,Bengaluru,Electronics,Keyboard,6,799,0,4794.0,UPI
+ORD10260,2025-05-30,Guntur,Clothing,T-Shirt,4,449,0,1796,Card
+ORD10261,2025-05-31,Vijayawada,Groceries,Tea Powder 500g,6,240,5,1368,Cash
+ORD10262,2025-06-01,Guntur,Electronics,Power Bank,7,999,0,6993,UPI
+ORD10263,2025-06-02,Bengaluru,Electronics,Keyboard,6,799,0,4794,UPI
 ORD10264,2025-06-03,Guntur,Electronics,Power Bank,4,999,5,3796.2,Cash
-ORD10265,2025-06-03,Bengaluru,Groceries,Sunflower Oil 1L,4,165,5,627.0,UPI
-ORD10266,2025-06-04,Bengaluru,Groceries,Sunflower Oil 1L,2,165,,330.0,Card
-ORD10267,2025-06-05,Bengaluru,Home,LED Bulb,4,129,0,516.0,Card
-ORD10268,2025-06-05,Bengaluru,Home,Bedsheet,1,699,0,699.0,Cash
+ORD10265,2025-06-03,Bengaluru,Groceries,Sunflower Oil 1L,4,165,5,627,UPI
+ORD10266,2025-06-04,Bengaluru,Groceries,Sunflower Oil 1L,2,165,,330,Card
+ORD10267,2025-06-05,Bengaluru,Home,LED Bulb,4,129,0,516,Card
+ORD10268,2025-06-05,Bengaluru,Home,Bedsheet,1,699,0,699,Cash
 ORD10269,2025-06-05,Chennai,Electronics,Keyboard,4,799,10,2876.4,Card
-ORD10270,2025-06-06,Guntur,Home,LED Bulb,6,129,,774.0,UPI
-ORD10271,2025-06-07,Hyderabad,Electronics,Smart Watch,5,2999,0,14995.0,Cash
+ORD10270,2025-06-06,Guntur,Home,LED Bulb,6,129,,774,UPI
+ORD10271,2025-06-07,Hyderabad,Electronics,Smart Watch,5,2999,0,14995,Cash
 ORD10272,2025-06-07,Visakhapatnam,Electronics,Smart Watch,1,2999,15,2549.15,Cash
-ORD10273,2025-06-08,Chennai,Electronics,Power Bank,4,999,0,3996.0,UPI
+ORD10273,2025-06-08,Chennai,Electronics,Power Bank,4,999,0,3996,UPI
 ORD10274,2025-06-09,Guntur,Electronics,Earbuds,7,1499,10,9443.7,Cash
 ORD10275,2025-06-09,Vijayawada,Electronics,Keyboard,5,799,10,3595.5,Cash
-ORD10276,2025-06-09,Hyderabad,Electronics,Power Bank,2,999,0,1998.0,Cash
-ORD10277,2025-06-10,Vijayawada,Home,Steel Bottle,4,349,0,1396.0,Cash
-ORD10278,2025-06-10,Guntur,Electronics,Earbuds,6,1499,0,8994.0,Card
+ORD10276,2025-06-09,Hyderabad,Electronics,Power Bank,2,999,0,1998,Cash
+ORD10277,2025-06-10,Vijayawada,Home,Steel Bottle,4,349,0,1396,Cash
+ORD10278,2025-06-10,Guntur,Electronics,Earbuds,6,1499,0,8994,Card
 ORD10279,2025-06-11,Bengaluru,Home,LED Bulb,4,129,10,464.4,UPI
-ORD10280,2025-06-11,Chennai,Electronics,Earbuds,6,1499,0,8994.0,UPI
+ORD10280,2025-06-11,Chennai,Electronics,Earbuds,6,1499,0,8994,UPI
 ORD10281,2025-06-11,Bengaluru,Groceries,Sunflower Oil 1L,3,165,5,470.25,Cash
 ORD10282,2025-06-12,Visakhapatnam,Clothing,Cotton Kurta,2,899,10,1618.2,UPI
-ORD10283,2025-06-12,Bengaluru,Electronics,Keyboard,2,799,0,1598.0,UPI
+ORD10283,2025-06-12,Bengaluru,Electronics,Keyboard,2,799,0,1598,UPI
 ORD10284,2025-06-13,Hyderabad,Home,LED Bulb,5,129,5,612.75,UPI
-ORD10285,2025-06-14,Vijayawada,Clothing,Jeans,6,1299,,7794.0,Cash
+ORD10285,2025-06-14,Vijayawada,Clothing,Jeans,6,1299,,7794,Cash
 ORD10286,2025-06-15,Vijayawada,Groceries,Basmati Rice 5kg,7,649,5,4315.85,Card
 ORD10287,2025-06-15,Hyderabad,Groceries,Basmati Rice 5kg,6,649,5,3699.3,UPI
 ORD10288,2025-06-16,Chennai,Electronics,Smart Watch,3,2999,5,8547.15,UPI
 ORD10289,2025-06-16,Chennai,Groceries,Basmati Rice 5kg,3,649,10,1752.3,UPI
-ORD10290,2025-06-19,Chennai,Groceries,Tea Powder 500g,4,240,0,960.0,UPI
-ORD10291,2025-06-19,Bengaluru,Electronics,Smart Watch,4,2999,0,11996.0,UPI
+ORD10290,2025-06-19,Chennai,Groceries,Tea Powder 500g,4,240,0,960,UPI
+ORD10291,2025-06-19,Bengaluru,Electronics,Smart Watch,4,2999,0,11996,UPI
 ORD10292,2025-06-19,Visakhapatnam,Clothing,T-Shirt,6,449,10,2424.6,UPI
-ORD10293,2025-06-20,Visakhapatnam,Groceries,Tea Powder 500g,6,240,10,1296.0,Cash
+ORD10293,2025-06-20,Visakhapatnam,Groceries,Tea Powder 500g,6,240,10,1296,Cash
 ORD10294,2025-06-20,Hyderabad,Clothing,T-Shirt,1,449,5,426.55,Cash
 ORD10295,2025-06-20,Bengaluru,Electronics,Power Bank,2,999,5,1898.1,UPI
 ORD10296,2025-06-20,Vijayawada,Groceries,Sunflower Oil 1L,5,165,15,701.25,UPI
-ORD10297,2025-06-21,Hyderabad,Electronics,Keyboard,3,799,,2397.0,Card
-ORD10298,2025-06-21,Guntur,Home,Bedsheet,4,699,0,2796.0,Cash
+ORD10297,2025-06-21,Hyderabad,Electronics,Keyboard,3,799,,2397,Card
+ORD10298,2025-06-21,Guntur,Home,Bedsheet,4,699,0,2796,Cash
 ORD10299,2025-06-21,Hyderabad,Groceries,Basmati Rice 5kg,2,649,5,1233.1,Cash
-ORD10300,2025-06-22,Bengaluru,Clothing,Jeans,1,1299,0,1299.0,UPI
+ORD10300,2025-06-22,Bengaluru,Clothing,Jeans,1,1299,0,1299,UPI
 ORD10301,2025-06-23,Vijayawada,Home,Steel Bottle,7,349,15,2076.55,Card
 ORD10302,2025-06-23,Guntur,Clothing,T-Shirt,6,449,10,2424.6,UPI
-ORD10303,2025-06-24,Bengaluru,Electronics,Power Bank,3,999,0,2997.0,Card
-ORD10304,2025-06-24,Visakhapatnam,Groceries,Tea Powder 500g,1,240,0,240.0,UPI
-ORD10305,2025-06-24,Guntur,Groceries,Tea Powder 500g,6,240,15,1224.0,UPI
-ORD10306,2025-06-24,Vijayawada,Clothing,T-Shirt,2,449,0,898.0,Cash
+ORD10303,2025-06-24,Bengaluru,Electronics,Power Bank,3,999,0,2997,Card
+ORD10304,2025-06-24,Visakhapatnam,Groceries,Tea Powder 500g,1,240,0,240,UPI
+ORD10305,2025-06-24,Guntur,Groceries,Tea Powder 500g,6,240,15,1224,UPI
+ORD10306,2025-06-24,Vijayawada,Clothing,T-Shirt,2,449,0,898,Cash
 ORD10307,2025-06-24,Vijayawada,Home,LED Bulb,1,129,5,122.55,UPI
-ORD10308,2025-06-25,Bengaluru,Groceries,Basmati Rice 5kg,1,649,,649.0,UPI
-ORD10309,2025-06-26,Vijayawada,Electronics,Earbuds,7,1499,0,10493.0,Card
+ORD10308,2025-06-25,Bengaluru,Groceries,Basmati Rice 5kg,1,649,,649,UPI
+ORD10309,2025-06-26,Vijayawada,Electronics,Earbuds,7,1499,0,10493,Card
 ORD10310,2025-06-26,Hyderabad,Clothing,Jeans,4,1299,10,4676.4,UPI
 ORD10311,2025-06-26,Vijayawada,Electronics,Power Bank,1,999,10,899.1,UPI
-ORD10312,2025-06-27,Bengaluru,Clothing,Cotton Kurta,4,899,0,3596.0,Card
-ORD10313,2025-06-27,Vijayawada,Clothing,Cotton Kurta,2,899,0,1798.0,Cash
-ORD10314,2025-06-28,Vijayawada,Electronics,Keyboard,2,799,0,1598.0,UPI
-ORD10315,2025-06-28,Guntur,Groceries,Tea Powder 500g,7,240,5,1596.0,UPI
-ORD10316,2025-06-29,Chennai,Clothing,Cotton Kurta,3,899,0,2697.0,Card
-ORD10317,2025-06-30,Chennai,Home,Bedsheet,2,699,0,1398.0,Cash
+ORD10312,2025-06-27,Bengaluru,Clothing,Cotton Kurta,4,899,0,3596,Card
+ORD10313,2025-06-27,Vijayawada,Clothing,Cotton Kurta,2,899,0,1798,Cash
+ORD10314,2025-06-28,Vijayawada,Electronics,Keyboard,2,799,0,1598,UPI
+ORD10315,2025-06-28,Guntur,Groceries,Tea Powder 500g,7,240,5,1596,UPI
+ORD10316,2025-06-29,Chennai,Clothing,Cotton Kurta,3,899,0,2697,Card
+ORD10317,2025-06-30,Chennai,Home,Bedsheet,2,699,0,1398,Cash
 ORD10318,2025-07-02,Vijayawada,Clothing,T-Shirt,6,449,5,2559.3,Card
 ORD10319,2025-07-02,Hyderabad,Groceries,Basmati Rice 5kg,7,649,5,4315.85,Card
 ORD10320,2025-07-02,Chennai,Clothing,Jeans,1,1299,5,1234.05,UPI
-ORD10321,2025-07-03,Chennai,Clothing,T-Shirt,5,449,0,2245.0,Card
-ORD10322,2025-07-04,Visakhapatnam,Home,Bedsheet,3,699,0,2097.0,Cash
-ORD10323,2025-07-04,Chennai,Clothing,Jeans,4,1299,0,5196.0,UPI
+ORD10321,2025-07-03,Chennai,Clothing,T-Shirt,5,449,0,2245,Card
+ORD10322,2025-07-04,Visakhapatnam,Home,Bedsheet,3,699,0,2097,Cash
+ORD10323,2025-07-04,Chennai,Clothing,Jeans,4,1299,0,5196,UPI
 ORD10324,2025-07-04,Visakhapatnam,Groceries,Sunflower Oil 1L,5,165,10,742.5,UPI
-ORD10325,2025-07-05,Bengaluru,Electronics,Earbuds,6,1499,0,8994.0,Card
-ORD10326,2025-07-06,Chennai,Groceries,Tea Powder 500g,5,240,,1200.0,UPI
-ORD10327,2025-07-06,Vijayawada,Electronics,Earbuds,2,1499,0,2998.0,Card
-ORD10328,2025-07-07,Bengaluru,Clothing,Jeans,2,1299,0,2598.0,UPI
-ORD10329,2025-07-08,Bengaluru,Electronics,Keyboard,6,799,0,4794.0,Card
-ORD10330,2025-07-08,Vijayawada,Home,Steel Bottle,6,349,,2094.0,Card
-ORD10331,2025-07-08,Bengaluru,Groceries,Basmati Rice 5kg,5,649,0,3245.0,Card
-ORD10332,2025-07-08,Chennai,Clothing,Jeans,5,1299,0,6495.0,UPI
-ORD10333,2025-07-08,Bengaluru,Groceries,Basmati Rice 5kg,7,649,0,4543.0,UPI
+ORD10325,2025-07-05,Bengaluru,Electronics,Earbuds,6,1499,0,8994,Card
+ORD10326,2025-07-06,Chennai,Groceries,Tea Powder 500g,5,240,,1200,UPI
+ORD10327,2025-07-06,Vijayawada,Electronics,Earbuds,2,1499,0,2998,Card
+ORD10328,2025-07-07,Bengaluru,Clothing,Jeans,2,1299,0,2598,UPI
+ORD10329,2025-07-08,Bengaluru,Electronics,Keyboard,6,799,0,4794,Card
+ORD10330,2025-07-08,Vijayawada,Home,Steel Bottle,6,349,,2094,Card
+ORD10331,2025-07-08,Bengaluru,Groceries,Basmati Rice 5kg,5,649,0,3245,Card
+ORD10332,2025-07-08,Chennai,Clothing,Jeans,5,1299,0,6495,UPI
+ORD10333,2025-07-08,Bengaluru,Groceries,Basmati Rice 5kg,7,649,0,4543,UPI
 ORD10334,2025-07-08,Visakhapatnam,Groceries,Basmati Rice 5kg,4,649,10,2336.4,Cash
-ORD10335,2025-07-09,Hyderabad,Clothing,Cotton Kurta,1,899,,899.0,Card
-ORD10336,2025-07-09,Visakhapatnam,Groceries,Tea Powder 500g,5,240,0,1200.0,UPI
+ORD10335,2025-07-09,Hyderabad,Clothing,Cotton Kurta,1,899,,899,Card
+ORD10336,2025-07-09,Visakhapatnam,Groceries,Tea Powder 500g,5,240,0,1200,UPI
 ORD10337,2025-07-09,Bengaluru,Clothing,Cotton Kurta,3,899,10,2427.3,UPI
 ORD10338,2025-07-10,Guntur,Electronics,Earbuds,1,1499,10,1349.1,UPI
-ORD10339,2025-07-10,Hyderabad,Electronics,Power Bank,2,999,0,1998.0,Card
-ORD10340,2025-07-10,Visakhapatnam,Clothing,Jeans,6,1299,0,7794.0,Cash
-ORD10341,2025-07-11,Chennai,Clothing,Cotton Kurta,3,899,0,2697.0,UPI
-ORD10342,2025-07-11,Visakhapatnam,Clothing,Jeans,7,1299,0,9093.0,UPI
+ORD10339,2025-07-10,Hyderabad,Electronics,Power Bank,2,999,0,1998,Card
+ORD10340,2025-07-10,Visakhapatnam,Clothing,Jeans,6,1299,0,7794,Cash
+ORD10341,2025-07-11,Chennai,Clothing,Cotton Kurta,3,899,0,2697,UPI
+ORD10342,2025-07-11,Visakhapatnam,Clothing,Jeans,7,1299,0,9093,UPI
 ORD10343,2025-07-13,Hyderabad,Home,LED Bulb,5,129,15,548.25,Card
-ORD10344,2025-07-14,Hyderabad,Clothing,Cotton Kurta,6,899,0,5394.0,UPI
-ORD10345,2025-07-14,Vijayawada,Groceries,Tea Powder 500g,7,240,5,1596.0,Card
-ORD10346,2025-07-15,Chennai,Electronics,Power Bank,7,999,0,6993.0,Cash
-ORD10347,2025-07-19,Vijayawada,Home,Bedsheet,6,699,,4194.0,Cash
-ORD10348,2025-07-20,Bengaluru,Clothing,Jeans,1,1299,0,1299.0,Cash
-ORD10349,2025-07-21,Hyderabad,Electronics,Smart Watch,7,2999,0,20993.0,Card
+ORD10344,2025-07-14,Hyderabad,Clothing,Cotton Kurta,6,899,0,5394,UPI
+ORD10345,2025-07-14,Vijayawada,Groceries,Tea Powder 500g,7,240,5,1596,Card
+ORD10346,2025-07-15,Chennai,Electronics,Power Bank,7,999,0,6993,Cash
+ORD10347,2025-07-19,Vijayawada,Home,Bedsheet,6,699,,4194,Cash
+ORD10348,2025-07-20,Bengaluru,Clothing,Jeans,1,1299,0,1299,Cash
+ORD10349,2025-07-21,Hyderabad,Electronics,Smart Watch,7,2999,0,20993,Card
 ORD10350,2025-07-22,Hyderabad,Clothing,T-Shirt,2,449,5,853.1,UPI
 ORD10351,2025-07-22,Guntur,Clothing,T-Shirt,6,449,5,2559.3,Cash
 ORD10352,2025-07-22,Chennai,Clothing,T-Shirt,7,449,10,2828.7,Cash
-ORD10353,2025-07-23,Vijayawada,Home,LED Bulb,7,129,0,903.0,UPI
+ORD10353,2025-07-23,Vijayawada,Home,LED Bulb,7,129,0,903,UPI
 ORD10354,2025-07-23,Chennai,Clothing,Cotton Kurta,7,899,5,5978.35,Cash
 ORD10355,2025-07-24,Visakhapatnam,Home,Bedsheet,6,699,5,3984.3,UPI
 ORD10356,2025-07-24,Chennai,Home,LED Bulb,2,129,5,245.1,UPI
-ORD10357,2025-07-25,Vijayawada,Home,Steel Bottle,7,349,0,2443.0,Cash
-ORD10358,2025-07-25,Visakhapatnam,Clothing,Jeans,3,1299,0,3897.0,Cash
+ORD10357,2025-07-25,Vijayawada,Home,Steel Bottle,7,349,0,2443,Cash
+ORD10358,2025-07-25,Visakhapatnam,Clothing,Jeans,3,1299,0,3897,Cash
 ORD10359,2025-07-25,Guntur,Groceries,Basmati Rice 5kg,7,649,15,3861.55,Cash
-ORD10360,2025-07-25,Chennai,Home,Steel Bottle,2,349,,698.0,UPI
+ORD10360,2025-07-25,Chennai,Home,Steel Bottle,2,349,,698,UPI
 ORD10361,2025-07-26,Hyderabad,Home,Bedsheet,6,699,10,3774.6,Card
 ORD10362,2025-07-26,Bengaluru,Electronics,Keyboard,6,799,15,4074.9,UPI
-ORD10363,2025-07-26,Hyderabad,Electronics,Keyboard,7,799,0,5593.0,Cash
+ORD10363,2025-07-26,Hyderabad,Electronics,Keyboard,7,799,0,5593,Cash
 ORD10364,2025-07-26,Chennai,Clothing,T-Shirt,3,449,5,1279.65,Cash
-ORD10365,2025-07-26,Vijayawada,Home,Steel Bottle,4,349,0,1396.0,Card
+ORD10365,2025-07-26,Vijayawada,Home,Steel Bottle,4,349,0,1396,Card
 ORD10366,2025-07-28,Chennai,Home,LED Bulb,6,129,15,657.9,UPI
-ORD10367,2025-07-30,Hyderabad,Groceries,Tea Powder 500g,7,240,15,1428.0,UPI
+ORD10367,2025-07-30,Hyderabad,Groceries,Tea Powder 500g,7,240,15,1428,UPI
 ORD10368,2025-07-30,Chennai,Electronics,Smart Watch,2,2999,10,5398.2,Card
 ORD10369,2025-07-31,Vijayawada,Clothing,Cotton Kurta,7,899,15,5349.05,Cash
-ORD10370,2025-08-01,Visakhapatnam,Electronics,Smart Watch,4,2999,0,11996.0,UPI
-ORD10371,2025-08-03,Vijayawada,Electronics,Keyboard,7,799,0,5593.0,Card
-ORD10372,2025-08-03,Chennai,Electronics,Power Bank,3,999,,2997.0,UPI
-ORD10373,2025-08-04,Visakhapatnam,Clothing,Jeans,1,1299,0,1299.0,UPI
-ORD10374,2025-08-06,Hyderabad,Electronics,Smart Watch,7,2999,0,20993.0,UPI
-ORD10375,2025-08-06,Guntur,Groceries,Tea Powder 500g,1,240,5,228.0,Cash
-ORD10376,2025-08-06,Chennai,Electronics,Keyboard,4,799,0,3196.0,UPI
-ORD10377,2025-08-06,Guntur,Electronics,Earbuds,4,1499,0,5996.0,UPI
-ORD10378,2025-08-07,Vijayawada,Clothing,T-Shirt,5,449,,2245.0,UPI
+ORD10370,2025-08-01,Visakhapatnam,Electronics,Smart Watch,4,2999,0,11996,UPI
+ORD10371,2025-08-03,Vijayawada,Electronics,Keyboard,7,799,0,5593,Card
+ORD10372,2025-08-03,Chennai,Electronics,Power Bank,3,999,,2997,UPI
+ORD10373,2025-08-04,Visakhapatnam,Clothing,Jeans,1,1299,0,1299,UPI
+ORD10374,2025-08-06,Hyderabad,Electronics,Smart Watch,7,2999,0,20993,UPI
+ORD10375,2025-08-06,Guntur,Groceries,Tea Powder 500g,1,240,5,228,Cash
+ORD10376,2025-08-06,Chennai,Electronics,Keyboard,4,799,0,3196,UPI
+ORD10377,2025-08-06,Guntur,Electronics,Earbuds,4,1499,0,5996,UPI
+ORD10378,2025-08-07,Vijayawada,Clothing,T-Shirt,5,449,,2245,UPI
 ORD10379,2025-08-07,Chennai,Clothing,Cotton Kurta,6,899,10,4854.6,UPI
-ORD10380,2025-08-07,Visakhapatnam,Clothing,Cotton Kurta,6,899,0,5394.0,UPI
-ORD10381,2025-08-08,Chennai,Clothing,Cotton Kurta,7,899,0,6293.0,UPI
-ORD10382,2025-08-09,Guntur,Groceries,Basmati Rice 5kg,4,649,0,2596.0,UPI
-ORD10383,2025-08-09,Visakhapatnam,Electronics,Keyboard,5,799,0,3995.0,UPI
+ORD10380,2025-08-07,Visakhapatnam,Clothing,Cotton Kurta,6,899,0,5394,UPI
+ORD10381,2025-08-08,Chennai,Clothing,Cotton Kurta,7,899,0,6293,UPI
+ORD10382,2025-08-09,Guntur,Groceries,Basmati Rice 5kg,4,649,0,2596,UPI
+ORD10383,2025-08-09,Visakhapatnam,Electronics,Keyboard,5,799,0,3995,UPI
 ORD10384,2025-08-10,Guntur,Clothing,Jeans,7,1299,10,8183.7,Cash
-ORD10385,2025-08-11,Visakhapatnam,Clothing,Jeans,5,1299,0,6495.0,Cash
-ORD10386,2025-08-11,Hyderabad,Clothing,T-Shirt,2,449,0,898.0,UPI
+ORD10385,2025-08-11,Visakhapatnam,Clothing,Jeans,5,1299,0,6495,Cash
+ORD10386,2025-08-11,Hyderabad,Clothing,T-Shirt,2,449,0,898,UPI
 ORD10387,2025-08-12,Hyderabad,Groceries,Basmati Rice 5kg,2,649,10,1168.2,UPI
-ORD10388,2025-08-12,Hyderabad,Electronics,Smart Watch,7,2999,0,20993.0,Cash
-ORD10389,2025-08-13,Vijayawada,Clothing,Jeans,6,1299,0,7794.0,Card
-ORD10390,2025-08-14,Guntur,Home,Steel Bottle,5,349,0,1745.0,Cash
-ORD10391,2025-08-15,Chennai,Groceries,Sunflower Oil 1L,5,165,,825.0,Cash
+ORD10388,2025-08-12,Hyderabad,Electronics,Smart Watch,7,2999,0,20993,Cash
+ORD10389,2025-08-13,Vijayawada,Clothing,Jeans,6,1299,0,7794,Card
+ORD10390,2025-08-14,Guntur,Home,Steel Bottle,5,349,0,1745,Cash
+ORD10391,2025-08-15,Chennai,Groceries,Sunflower Oil 1L,5,165,,825,Cash
 ORD10392,2025-08-15,Visakhapatnam,Home,Steel Bottle,2,349,10,628.2,Cash
-ORD10393,2025-08-15,Hyderabad,Groceries,Tea Powder 500g,4,240,10,864.0,Card
-ORD10394,2025-08-16,Bengaluru,Groceries,Tea Powder 500g,1,240,10,216.0,UPI
-ORD10395,2025-08-16,Hyderabad,Groceries,Tea Powder 500g,7,240,5,1596.0,Cash
-ORD10396,2025-08-16,Guntur,Home,Bedsheet,3,699,,2097.0,Cash
-ORD10397,2025-08-17,Visakhapatnam,Clothing,Cotton Kurta,6,899,0,5394.0,UPI
-ORD10398,2025-08-18,Bengaluru,Groceries,Sunflower Oil 1L,5,165,0,825.0,UPI
+ORD10393,2025-08-15,Hyderabad,Groceries,Tea Powder 500g,4,240,10,864,Card
+ORD10394,2025-08-16,Bengaluru,Groceries,Tea Powder 500g,1,240,10,216,UPI
+ORD10395,2025-08-16,Hyderabad,Groceries,Tea Powder 500g,7,240,5,1596,Cash
+ORD10396,2025-08-16,Guntur,Home,Bedsheet,3,699,,2097,Cash
+ORD10397,2025-08-17,Visakhapatnam,Clothing,Cotton Kurta,6,899,0,5394,UPI
+ORD10398,2025-08-18,Bengaluru,Groceries,Sunflower Oil 1L,5,165,0,825,UPI
 ORD10399,2025-08-18,Hyderabad,Electronics,Keyboard,7,799,15,4754.05,Cash
 ORD10400,2025-08-19,Guntur,Groceries,Basmati Rice 5kg,3,649,10,1752.3,UPI
 ORD10401,2025-08-19,Visakhapatnam,Groceries,Basmati Rice 5kg,3,649,5,1849.65,UPI
-ORD10402,2025-08-20,Guntur,Home,Steel Bottle,7,349,0,2443.0,UPI
-ORD10403,2025-08-20,Vijayawada,Groceries,Basmati Rice 5kg,7,649,0,4543.0,UPI
+ORD10402,2025-08-20,Guntur,Home,Steel Bottle,7,349,0,2443,UPI
+ORD10403,2025-08-20,Vijayawada,Groceries,Basmati Rice 5kg,7,649,0,4543,UPI
 ORD10404,2025-08-20,Visakhapatnam,Groceries,Sunflower Oil 1L,2,165,15,280.5,UPI
 ORD10405,2025-08-21,Visakhapatnam,Electronics,Power Bank,7,999,10,6293.7,UPI
-ORD10406,2025-08-21,Vijayawada,Electronics,Keyboard,2,799,0,1598.0,UPI
-ORD10407,2025-08-21,Vijayawada,Groceries,Basmati Rice 5kg,5,649,,3245.0,UPI
+ORD10406,2025-08-21,Vijayawada,Electronics,Keyboard,2,799,0,1598,UPI
+ORD10407,2025-08-21,Vijayawada,Groceries,Basmati Rice 5kg,5,649,,3245,UPI
 ORD10408,2025-08-21,Bengaluru,Groceries,Basmati Rice 5kg,5,649,5,3082.75,UPI
 ORD10409,2025-08-22,Visakhapatnam,Clothing,Jeans,7,1299,5,8638.35,Cash
 ORD10410,2025-08-22,Hyderabad,Groceries,Basmati Rice 5kg,5,649,15,2758.25,UPI
-ORD10411,2025-08-23,Bengaluru,Electronics,Power Bank,5,999,0,4995.0,UPI
+ORD10411,2025-08-23,Bengaluru,Electronics,Power Bank,5,999,0,4995,UPI
 ORD10412,2025-08-24,Bengaluru,Clothing,Jeans,6,1299,5,7404.3,Cash
-ORD10413,2025-08-25,Vijayawada,Home,LED Bulb,1,129,0,129.0,UPI
+ORD10413,2025-08-25,Vijayawada,Home,LED Bulb,1,129,0,129,UPI
 ORD10414,2025-08-26,Hyderabad,Home,LED Bulb,1,129,15,109.65,Card
 ORD10415,2025-08-27,Chennai,Home,Bedsheet,7,699,10,4403.7,Card
-ORD10416,2025-08-28,Vijayawada,Home,Bedsheet,3,699,0,2097.0,UPI
-ORD10417,2025-08-28,Guntur,Groceries,Tea Powder 500g,6,240,0,1440.0,Card
+ORD10416,2025-08-28,Vijayawada,Home,Bedsheet,3,699,0,2097,UPI
+ORD10417,2025-08-28,Guntur,Groceries,Tea Powder 500g,6,240,0,1440,Card
 ORD10418,2025-08-29,Visakhapatnam,Clothing,T-Shirt,1,449,5,426.55,Card
 ORD10419,2025-08-29,Vijayawada,Clothing,Cotton Kurta,2,899,10,1618.2,UPI
 ORD10420,2025-08-29,Visakhapatnam,Groceries,Basmati Rice 5kg,7,649,10,4088.7,Cash
 ORD10421,2025-08-30,Bengaluru,Groceries,Basmati Rice 5kg,4,649,5,2466.2,UPI
 ORD10422,2025-08-30,Hyderabad,Home,LED Bulb,3,129,5,367.65,UPI
-ORD10423,2025-08-31,Vijayawada,Home,Steel Bottle,7,349,0,2443.0,Card
-ORD10424,2025-08-31,Bengaluru,Electronics,Keyboard,4,799,,3196.0,Card
-ORD10425,2025-08-31,Visakhapatnam,Groceries,Tea Powder 500g,2,240,0,480.0,UPI
+ORD10423,2025-08-31,Vijayawada,Home,Steel Bottle,7,349,0,2443,Card
+ORD10424,2025-08-31,Bengaluru,Electronics,Keyboard,4,799,,3196,Card
+ORD10425,2025-08-31,Visakhapatnam,Groceries,Tea Powder 500g,2,240,0,480,UPI
 ORD10426,2025-09-01,Vijayawada,Groceries,Sunflower Oil 1L,6,165,15,841.5,Card
-ORD10427,2025-09-02,Visakhapatnam,Clothing,Cotton Kurta,7,899,0,6293.0,Cash
+ORD10427,2025-09-02,Visakhapatnam,Clothing,Cotton Kurta,7,899,0,6293,Cash
 ORD10428,2025-09-02,Vijayawada,Home,Bedsheet,2,699,5,1328.1,Cash
-ORD10429,2025-09-03,Bengaluru,Clothing,T-Shirt,1,449,0,449.0,UPI
+ORD10429,2025-09-03,Bengaluru,Clothing,T-Shirt,1,449,0,449,UPI
 ORD10430,2025-09-03,Bengaluru,Home,Steel Bottle,2,349,10,628.2,UPI
-ORD10431,2025-09-03,Hyderabad,Home,LED Bulb,5,129,,645.0,UPI
+ORD10431,2025-09-03,Hyderabad,Home,LED Bulb,5,129,,645,UPI
 ORD10432,2025-09-04,Vijayawada,Clothing,Cotton Kurta,4,899,5,3416.2,UPI
-ORD10433,2025-09-04,Bengaluru,Home,Bedsheet,4,699,0,2796.0,Card
-ORD10434,2025-09-07,Hyderabad,Electronics,Earbuds,4,1499,0,5996.0,UPI
-ORD10435,2025-09-07,Guntur,Home,Steel Bottle,7,349,,2443.0,UPI
-ORD10436,2025-09-07,Hyderabad,Groceries,Tea Powder 500g,7,240,5,1596.0,UPI
+ORD10433,2025-09-04,Bengaluru,Home,Bedsheet,4,699,0,2796,Card
+ORD10434,2025-09-07,Hyderabad,Electronics,Earbuds,4,1499,0,5996,UPI
+ORD10435,2025-09-07,Guntur,Home,Steel Bottle,7,349,,2443,UPI
+ORD10436,2025-09-07,Hyderabad,Groceries,Tea Powder 500g,7,240,5,1596,UPI
 ORD10437,2025-09-08,Guntur,Clothing,Jeans,2,1299,10,2338.2,UPI
 ORD10438,2025-09-08,Guntur,Home,Bedsheet,2,699,10,1258.2,Cash
 ORD10439,2025-09-09,Hyderabad,Home,Steel Bottle,5,349,5,1657.75,Cash
-ORD10440,2025-09-09,Visakhapatnam,Home,Steel Bottle,3,349,0,1047.0,UPI
+ORD10440,2025-09-09,Visakhapatnam,Home,Steel Bottle,3,349,0,1047,UPI
 ORD10441,2025-09-10,Vijayawada,Home,LED Bulb,1,129,10,116.1,Cash
 ORD10442,2025-09-11,Bengaluru,Electronics,Keyboard,2,799,10,1438.2,UPI
-ORD10443,2025-09-11,Chennai,Clothing,T-Shirt,7,449,0,3143.0,UPI
-ORD10444,2025-09-11,Chennai,Electronics,Power Bank,2,999,,1998.0,Cash
-ORD10445,2025-09-11,Visakhapatnam,Groceries,Sunflower Oil 1L,4,165,0,660.0,Cash
+ORD10443,2025-09-11,Chennai,Clothing,T-Shirt,7,449,0,3143,UPI
+ORD10444,2025-09-11,Chennai,Electronics,Power Bank,2,999,,1998,Cash
+ORD10445,2025-09-11,Visakhapatnam,Groceries,Sunflower Oil 1L,4,165,0,660,Cash
 ORD10446,2025-09-12,Visakhapatnam,Home,Steel Bottle,4,349,15,1186.6,UPI
 ORD10447,2025-09-12,Hyderabad,Groceries,Sunflower Oil 1L,3,165,5,470.25,Cash
-ORD10448,2025-09-13,Vijayawada,Clothing,Cotton Kurta,6,899,0,5394.0,Cash
-ORD10449,2025-09-14,Hyderabad,Clothing,Jeans,2,1299,,2598.0,UPI
+ORD10448,2025-09-13,Vijayawada,Clothing,Cotton Kurta,6,899,0,5394,Cash
+ORD10449,2025-09-14,Hyderabad,Clothing,Jeans,2,1299,,2598,UPI
 ORD10450,2025-09-14,Hyderabad,Clothing,T-Shirt,3,449,5,1279.65,UPI
 ORD10451,2025-09-15,Visakhapatnam,Home,Steel Bottle,4,349,10,1256.4,Cash
-ORD10452,2025-09-15,Hyderabad,Groceries,Sunflower Oil 1L,5,165,0,825.0,Cash
-ORD10453,2025-09-16,Chennai,Groceries,Tea Powder 500g,5,240,5,1140.0,UPI
-ORD10454,2025-09-18,Visakhapatnam,Clothing,Cotton Kurta,4,899,,3596.0,Cash
-ORD10455,2025-09-19,Chennai,Electronics,Smart Watch,7,2999,0,20993.0,Cash
-ORD10456,2025-09-22,Visakhapatnam,Groceries,Sunflower Oil 1L,5,165,0,825.0,UPI
+ORD10452,2025-09-15,Hyderabad,Groceries,Sunflower Oil 1L,5,165,0,825,Cash
+ORD10453,2025-09-16,Chennai,Groceries,Tea Powder 500g,5,240,5,1140,UPI
+ORD10454,2025-09-18,Visakhapatnam,Clothing,Cotton Kurta,4,899,,3596,Cash
+ORD10455,2025-09-19,Chennai,Electronics,Smart Watch,7,2999,0,20993,Cash
+ORD10456,2025-09-22,Visakhapatnam,Groceries,Sunflower Oil 1L,5,165,0,825,UPI
 ORD10457,2025-09-22,Hyderabad,Groceries,Sunflower Oil 1L,3,165,15,420.75,Card
 ORD10458,2025-09-23,Bengaluru,Clothing,Jeans,5,1299,5,6170.25,UPI
-ORD10459,2025-09-23,Guntur,Groceries,Basmati Rice 5kg,3,649,0,1947.0,Card
-ORD10460,2025-09-23,Chennai,Groceries,Tea Powder 500g,4,240,5,912.0,UPI
+ORD10459,2025-09-23,Guntur,Groceries,Basmati Rice 5kg,3,649,0,1947,Card
+ORD10460,2025-09-23,Chennai,Groceries,Tea Powder 500g,4,240,5,912,UPI
 ORD10461,2025-09-23,Hyderabad,Electronics,Power Bank,7,999,10,6293.7,UPI
 ORD10462,2025-09-25,Guntur,Electronics,Earbuds,3,1499,10,4047.3,UPI
-ORD10463,2025-09-25,Hyderabad,Groceries,Tea Powder 500g,6,240,0,1440.0,Cash
-ORD10464,2025-09-26,Bengaluru,Groceries,Tea Powder 500g,3,240,5,684.0,UPI
-ORD10465,2025-09-27,Vijayawada,Groceries,Tea Powder 500g,3,240,10,648.0,Card
-ORD10466,2025-09-27,Guntur,Electronics,Smart Watch,3,2999,0,8997.0,UPI
+ORD10463,2025-09-25,Hyderabad,Groceries,Tea Powder 500g,6,240,0,1440,Cash
+ORD10464,2025-09-26,Bengaluru,Groceries,Tea Powder 500g,3,240,5,684,UPI
+ORD10465,2025-09-27,Vijayawada,Groceries,Tea Powder 500g,3,240,10,648,Card
+ORD10466,2025-09-27,Guntur,Electronics,Smart Watch,3,2999,0,8997,UPI
 ORD10467,2025-09-28,Chennai,Electronics,Smart Watch,1,2999,5,2849.05,Card
-ORD10468,2025-09-28,Guntur,Clothing,Cotton Kurta,5,899,0,4495.0,UPI
+ORD10468,2025-09-28,Guntur,Clothing,Cotton Kurta,5,899,0,4495,UPI
 ORD10469,2025-10-01,Vijayawada,Groceries,Sunflower Oil 1L,1,165,10,148.5,UPI
-ORD10470,2025-10-01,Guntur,Electronics,Smart Watch,2,2999,0,5998.0,Card
-ORD10471,2025-10-02,Hyderabad,Clothing,Jeans,3,1299,0,3897.0,UPI
+ORD10470,2025-10-01,Guntur,Electronics,Smart Watch,2,2999,0,5998,Card
+ORD10471,2025-10-02,Hyderabad,Clothing,Jeans,3,1299,0,3897,UPI
 ORD10472,2025-10-03,Guntur,Electronics,Keyboard,7,799,5,5313.35,Cash
 ORD10473,2025-10-04,Bengaluru,Home,Steel Bottle,3,349,10,942.3,UPI
 ORD10474,2025-10-05,Bengaluru,Clothing,Cotton Kurta,3,899,5,2562.15,UPI
 ORD10475,2025-10-06,Guntur,Electronics,Power Bank,3,999,5,2847.15,UPI
 ORD10476,2025-10-06,Vijayawada,Home,Bedsheet,5,699,15,2970.75,UPI
-ORD10477,2025-10-07,Hyderabad,Electronics,Power Bank,3,999,0,2997.0,Cash
-ORD10478,2025-10-07,Bengaluru,Groceries,Sunflower Oil 1L,7,165,0,1155.0,UPI
+ORD10477,2025-10-07,Hyderabad,Electronics,Power Bank,3,999,0,2997,Cash
+ORD10478,2025-10-07,Bengaluru,Groceries,Sunflower Oil 1L,7,165,0,1155,UPI
 ORD10479,2025-10-07,Visakhapatnam,Clothing,T-Shirt,5,449,15,1908.25,Card
-ORD10480,2025-10-08,Chennai,Groceries,Tea Powder 500g,6,240,5,1368.0,UPI
-ORD10481,2025-10-09,Chennai,Electronics,Earbuds,6,1499,0,8994.0,Card
-ORD10482,2025-10-09,Visakhapatnam,Clothing,Cotton Kurta,1,899,,899.0,Card
+ORD10480,2025-10-08,Chennai,Groceries,Tea Powder 500g,6,240,5,1368,UPI
+ORD10481,2025-10-09,Chennai,Electronics,Earbuds,6,1499,0,8994,Card
+ORD10482,2025-10-09,Visakhapatnam,Clothing,Cotton Kurta,1,899,,899,Card
 ORD10483,2025-10-11,Guntur,Home,LED Bulb,6,129,10,696.6,UPI
-ORD10484,2025-10-14,Chennai,Home,LED Bulb,6,129,0,774.0,UPI
-ORD10485,2025-10-15,Bengaluru,Electronics,Smart Watch,6,2999,0,17994.0,Cash
+ORD10484,2025-10-14,Chennai,Home,LED Bulb,6,129,0,774,UPI
+ORD10485,2025-10-15,Bengaluru,Electronics,Smart Watch,6,2999,0,17994,Cash
 ORD10486,2025-10-16,Chennai,Electronics,Smart Watch,7,2999,15,17844.05,Cash
 ORD10487,2025-10-17,Vijayawada,Electronics,Power Bank,1,999,10,899.1,UPI
-ORD10488,2025-10-18,Bengaluru,Groceries,Sunflower Oil 1L,3,165,0,495.0,Card
-ORD10489,2025-10-19,Bengaluru,Clothing,Jeans,2,1299,0,2598.0,Cash
+ORD10488,2025-10-18,Bengaluru,Groceries,Sunflower Oil 1L,3,165,0,495,Card
+ORD10489,2025-10-19,Bengaluru,Clothing,Jeans,2,1299,0,2598,Cash
 ORD10490,2025-10-19,Chennai,Clothing,T-Shirt,2,449,5,853.1,UPI
-ORD10491,2025-10-19,Chennai,Home,Steel Bottle,2,349,,698.0,UPI
+ORD10491,2025-10-19,Chennai,Home,Steel Bottle,2,349,,698,UPI
 ORD10492,2025-10-19,Visakhapatnam,Electronics,Keyboard,5,799,5,3795.25,Card
 ORD10493,2025-10-21,Chennai,Electronics,Smart Watch,7,2999,5,19943.35,UPI
 ORD10494,2025-10-22,Visakhapatnam,Clothing,Jeans,6,1299,10,7014.6,UPI
 ORD10495,2025-10-23,Visakhapatnam,Clothing,Jeans,5,1299,5,6170.25,UPI
-ORD10496,2025-10-24,Visakhapatnam,Clothing,Jeans,7,1299,0,9093.0,UPI
+ORD10496,2025-10-24,Visakhapatnam,Clothing,Jeans,7,1299,0,9093,UPI
 ORD10497,2025-10-24,Guntur,Home,Steel Bottle,3,349,5,994.65,UPI
 ORD10498,2025-10-26,Chennai,Home,LED Bulb,2,129,15,219.3,Card
-ORD10499,2025-10-26,Chennai,Groceries,Tea Powder 500g,7,240,0,1680.0,UPI
-ORD10500,2025-10-27,Visakhapatnam,Clothing,Cotton Kurta,1,899,0,899.0,Card
+ORD10499,2025-10-26,Chennai,Groceries,Tea Powder 500g,7,240,0,1680,UPI
+ORD10500,2025-10-27,Visakhapatnam,Clothing,Cotton Kurta,1,899,0,899,Card
 ORD10501,2025-10-27,Visakhapatnam,Home,Bedsheet,6,699,5,3984.3,UPI
-ORD10502,2025-10-30,Hyderabad,Groceries,Sunflower Oil 1L,4,165,0,660.0,Card
-ORD10503,2025-10-31,Hyderabad,Groceries,Tea Powder 500g,4,240,5,912.0,Card
+ORD10502,2025-10-30,Hyderabad,Groceries,Sunflower Oil 1L,4,165,0,660,Card
+ORD10503,2025-10-31,Hyderabad,Groceries,Tea Powder 500g,4,240,5,912,Card
 ORD10504,2025-11-01,Hyderabad,Electronics,Smart Watch,3,2999,15,7647.45,UPI
-ORD10505,2025-11-01,Visakhapatnam,Home,Bedsheet,1,699,0,699.0,Cash
-ORD10506,2025-11-01,Vijayawada,Electronics,Smart Watch,3,2999,,8997.0,UPI
-ORD10507,2025-11-03,Guntur,Electronics,Earbuds,5,1499,0,7495.0,Cash
+ORD10505,2025-11-01,Visakhapatnam,Home,Bedsheet,1,699,0,699,Cash
+ORD10506,2025-11-01,Vijayawada,Electronics,Smart Watch,3,2999,,8997,UPI
+ORD10507,2025-11-03,Guntur,Electronics,Earbuds,5,1499,0,7495,Cash
 ORD10508,2025-11-04,Hyderabad,Home,Bedsheet,7,699,15,4159.05,Card
-ORD10509,2025-11-05,Chennai,Clothing,T-Shirt,3,449,0,1347.0,UPI
+ORD10509,2025-11-05,Chennai,Clothing,T-Shirt,3,449,0,1347,UPI
 ORD10510,2025-11-05,Guntur,Groceries,Sunflower Oil 1L,7,165,15,981.75,UPI
-ORD10511,2025-11-05,Vijayawada,Groceries,Sunflower Oil 1L,2,165,0,330.0,UPI
-ORD10512,2025-11-06,Visakhapatnam,Electronics,Earbuds,6,1499,0,8994.0,Card
+ORD10511,2025-11-05,Vijayawada,Groceries,Sunflower Oil 1L,2,165,0,330,UPI
+ORD10512,2025-11-06,Visakhapatnam,Electronics,Earbuds,6,1499,0,8994,Card
 ORD10513,2025-11-07,Guntur,Home,Steel Bottle,1,349,10,314.1,UPI
 ORD10514,2025-11-08,Hyderabad,Electronics,Smart Watch,3,2999,5,8547.15,UPI
 ORD10515,2025-11-11,Vijayawada,Electronics,Earbuds,1,1499,10,1349.1,Card
 ORD10516,2025-11-12,Hyderabad,Home,Steel Bottle,4,349,10,1256.4,Cash
 ORD10517,2025-11-14,Vijayawada,Groceries,Sunflower Oil 1L,5,165,10,742.5,Card
 ORD10518,2025-11-14,Hyderabad,Home,Bedsheet,3,699,5,1992.15,UPI
-ORD10519,2025-11-15,Hyderabad,Home,Steel Bottle,7,349,0,2443.0,UPI
-ORD10520,2025-11-15,Hyderabad,Groceries,Tea Powder 500g,4,240,0,960.0,UPI
+ORD10519,2025-11-15,Hyderabad,Home,Steel Bottle,7,349,0,2443,UPI
+ORD10520,2025-11-15,Hyderabad,Groceries,Tea Powder 500g,4,240,0,960,UPI
 ORD10521,2025-11-15,Guntur,Clothing,T-Shirt,1,449,5,426.55,Card
 ORD10522,2025-11-16,Vijayawada,Home,Bedsheet,5,699,10,3145.5,UPI
 ORD10523,2025-11-16,Visakhapatnam,Electronics,Power Bank,7,999,5,6643.35,Card
-ORD10524,2025-11-17,Bengaluru,Clothing,T-Shirt,2,449,0,898.0,Card
-ORD10525,2025-11-17,Chennai,Electronics,Earbuds,6,1499,,8994.0,Cash
+ORD10524,2025-11-17,Bengaluru,Clothing,T-Shirt,2,449,0,898,Card
+ORD10525,2025-11-17,Chennai,Electronics,Earbuds,6,1499,,8994,Cash
 ORD10526,2025-11-18,Vijayawada,Clothing,Cotton Kurta,4,899,5,3416.2,Card
 ORD10527,2025-11-18,Bengaluru,Groceries,Basmati Rice 5kg,3,649,10,1752.3,Card
 ORD10528,2025-11-18,Chennai,Home,Bedsheet,3,699,10,1887.3,Card
-ORD10529,2025-11-20,Visakhapatnam,Groceries,Tea Powder 500g,4,240,15,816.0,UPI
-ORD10530,2025-11-20,Bengaluru,Electronics,Keyboard,7,799,0,5593.0,UPI
-ORD10531,2025-11-20,Visakhapatnam,Home,Steel Bottle,3,349,0,1047.0,UPI
-ORD10532,2025-11-20,Visakhapatnam,Electronics,Keyboard,7,799,0,5593.0,UPI
-ORD10533,2025-11-21,Guntur,Home,Bedsheet,2,699,0,1398.0,UPI
-ORD10534,2025-11-22,Bengaluru,Clothing,Jeans,6,1299,0,7794.0,Cash
-ORD10535,2025-11-22,Bengaluru,Clothing,Jeans,6,1299,0,7794.0,Card
+ORD10529,2025-11-20,Visakhapatnam,Groceries,Tea Powder 500g,4,240,15,816,UPI
+ORD10530,2025-11-20,Bengaluru,Electronics,Keyboard,7,799,0,5593,UPI
+ORD10531,2025-11-20,Visakhapatnam,Home,Steel Bottle,3,349,0,1047,UPI
+ORD10532,2025-11-20,Visakhapatnam,Electronics,Keyboard,7,799,0,5593,UPI
+ORD10533,2025-11-21,Guntur,Home,Bedsheet,2,699,0,1398,UPI
+ORD10534,2025-11-22,Bengaluru,Clothing,Jeans,6,1299,0,7794,Cash
+ORD10535,2025-11-22,Bengaluru,Clothing,Jeans,6,1299,0,7794,Card
 ORD10536,2025-11-24,Hyderabad,Clothing,Cotton Kurta,7,899,15,5349.05,Card
-ORD10537,2025-11-26,Chennai,Clothing,Cotton Kurta,1,899,0,899.0,UPI
+ORD10537,2025-11-26,Chennai,Clothing,Cotton Kurta,1,899,0,899,UPI
 ORD10538,2025-11-26,Bengaluru,Electronics,Smart Watch,4,2999,15,10196.6,Card
-ORD10539,2025-11-26,Chennai,Groceries,Sunflower Oil 1L,6,165,0,990.0,Card
-ORD10540,2025-11-27,Chennai,Electronics,Smart Watch,7,2999,0,20993.0,UPI
-ORD10541,2025-11-27,Visakhapatnam,Electronics,Power Bank,2,999,0,1998.0,Cash
-ORD10542,2025-11-27,Guntur,Home,Bedsheet,4,699,0,2796.0,UPI
-ORD10543,2025-11-27,Bengaluru,Groceries,Tea Powder 500g,7,240,0,1680.0,Card
+ORD10539,2025-11-26,Chennai,Groceries,Sunflower Oil 1L,6,165,0,990,Card
+ORD10540,2025-11-27,Chennai,Electronics,Smart Watch,7,2999,0,20993,UPI
+ORD10541,2025-11-27,Visakhapatnam,Electronics,Power Bank,2,999,0,1998,Cash
+ORD10542,2025-11-27,Guntur,Home,Bedsheet,4,699,0,2796,UPI
+ORD10543,2025-11-27,Bengaluru,Groceries,Tea Powder 500g,7,240,0,1680,Card
 ORD10544,2025-11-27,Vijayawada,Groceries,Sunflower Oil 1L,7,165,5,1097.25,UPI
 ORD10545,2025-11-29,Vijayawada,Clothing,T-Shirt,2,449,5,853.1,Cash
 ORD10546,2025-11-29,Chennai,Groceries,Sunflower Oil 1L,3,165,5,470.25,UPI
-ORD10547,2025-12-01,Guntur,Groceries,Basmati Rice 5kg,1,649,0,649.0,Cash
+ORD10547,2025-12-01,Guntur,Groceries,Basmati Rice 5kg,1,649,0,649,Cash
 ORD10548,2025-12-01,Guntur,Electronics,Smart Watch,3,2999,5,8547.15,UPI
-ORD10549,2025-12-03,Visakhapatnam,Clothing,T-Shirt,1,449,0,449.0,UPI
-ORD10550,2025-12-03,Vijayawada,Clothing,Cotton Kurta,7,899,,6293.0,Card
-ORD10551,2025-12-03,Chennai,Groceries,Tea Powder 500g,6,240,5,1368.0,Card
-ORD10552,2025-12-04,Chennai,Clothing,Cotton Kurta,7,899,0,6293.0,Card
+ORD10549,2025-12-03,Visakhapatnam,Clothing,T-Shirt,1,449,0,449,UPI
+ORD10550,2025-12-03,Vijayawada,Clothing,Cotton Kurta,7,899,,6293,Card
+ORD10551,2025-12-03,Chennai,Groceries,Tea Powder 500g,6,240,5,1368,Card
+ORD10552,2025-12-04,Chennai,Clothing,Cotton Kurta,7,899,0,6293,Card
 ORD10553,2025-12-04,Visakhapatnam,Electronics,Smart Watch,2,2999,10,5398.2,UPI
 ORD10554,2025-12-05,Chennai,Clothing,Cotton Kurta,6,899,15,4584.9,Cash
 ORD10555,2025-12-05,Guntur,Clothing,T-Shirt,6,449,5,2559.3,Card
-ORD10556,2025-12-05,Guntur,Electronics,Power Bank,7,999,0,6993.0,UPI
+ORD10556,2025-12-05,Guntur,Electronics,Power Bank,7,999,0,6993,UPI
 ORD10557,2025-12-06,Vijayawada,Home,LED Bulb,7,129,5,857.85,Card
-ORD10558,2025-12-07,Guntur,Home,LED Bulb,6,129,0,774.0,Card
+ORD10558,2025-12-07,Guntur,Home,LED Bulb,6,129,0,774,Card
 ORD10559,2025-12-07,Guntur,Clothing,Jeans,5,1299,10,5845.5,UPI
 ORD10560,2025-12-07,Visakhapatnam,Home,Steel Bottle,5,349,5,1657.75,UPI
 ORD10561,2025-12-07,Bengaluru,Groceries,Basmati Rice 5kg,3,649,10,1752.3,UPI
-ORD10562,2025-12-08,Hyderabad,Electronics,Keyboard,4,799,0,3196.0,Card
+ORD10562,2025-12-08,Hyderabad,Electronics,Keyboard,4,799,0,3196,Card
 ORD10563,2025-12-10,Hyderabad,Electronics,Keyboard,4,799,5,3036.2,Card
 ORD10564,2025-12-10,Hyderabad,Home,LED Bulb,5,129,10,580.5,UPI
-ORD10565,2025-12-12,Bengaluru,Groceries,Basmati Rice 5kg,2,649,0,1298.0,UPI
-ORD10566,2025-12-13,Chennai,Electronics,Keyboard,4,799,0,3196.0,Cash
-ORD10567,2025-12-13,Vijayawada,Clothing,Cotton Kurta,7,899,0,6293.0,Card
-ORD10568,2025-12-13,Vijayawada,Groceries,Tea Powder 500g,7,240,5,1596.0,Card
+ORD10565,2025-12-12,Bengaluru,Groceries,Basmati Rice 5kg,2,649,0,1298,UPI
+ORD10566,2025-12-13,Chennai,Electronics,Keyboard,4,799,0,3196,Cash
+ORD10567,2025-12-13,Vijayawada,Clothing,Cotton Kurta,7,899,0,6293,Card
+ORD10568,2025-12-13,Vijayawada,Groceries,Tea Powder 500g,7,240,5,1596,Card
 ORD10569,2025-12-13,Guntur,Groceries,Sunflower Oil 1L,5,165,10,742.5,Card
-ORD10570,2025-12-14,Vijayawada,Home,Bedsheet,1,699,0,699.0,UPI
+ORD10570,2025-12-14,Vijayawada,Home,Bedsheet,1,699,0,699,UPI
 ORD10571,2025-12-15,Bengaluru,Clothing,Cotton Kurta,1,899,5,854.05,UPI
-ORD10572,2025-12-15,Vijayawada,Home,Bedsheet,5,699,0,3495.0,UPI
-ORD10573,2025-12-16,Chennai,Clothing,T-Shirt,4,449,0,1796.0,UPI
-ORD10574,2025-12-17,Vijayawada,Groceries,Tea Powder 500g,4,240,0,960.0,UPI
-ORD10575,2025-12-17,Guntur,Groceries,Sunflower Oil 1L,2,165,0,330.0,UPI
+ORD10572,2025-12-15,Vijayawada,Home,Bedsheet,5,699,0,3495,UPI
+ORD10573,2025-12-16,Chennai,Clothing,T-Shirt,4,449,0,1796,UPI
+ORD10574,2025-12-17,Vijayawada,Groceries,Tea Powder 500g,4,240,0,960,UPI
+ORD10575,2025-12-17,Guntur,Groceries,Sunflower Oil 1L,2,165,0,330,UPI
 ORD10576,2025-12-17,Bengaluru,Electronics,Power Bank,2,999,5,1898.1,Cash
 ORD10577,2025-12-18,Chennai,Groceries,Basmati Rice 5kg,1,649,5,616.55,UPI
-ORD10578,2025-12-18,Chennai,Home,LED Bulb,1,129,0,129.0,UPI
-ORD10579,2025-12-19,Hyderabad,Groceries,Tea Powder 500g,2,240,10,432.0,Cash
+ORD10578,2025-12-18,Chennai,Home,LED Bulb,1,129,0,129,UPI
+ORD10579,2025-12-19,Hyderabad,Groceries,Tea Powder 500g,2,240,10,432,Cash
 ORD10580,2025-12-19,Guntur,Home,Bedsheet,7,699,5,4648.35,Cash
-ORD10581,2025-12-19,Vijayawada,Groceries,Sunflower Oil 1L,4,165,15,561.0,UPI
-ORD10582,2025-12-19,Vijayawada,Groceries,Tea Powder 500g,2,240,0,480.0,Cash
-ORD10583,2025-12-20,Chennai,Groceries,Basmati Rice 5kg,4,649,0,2596.0,Cash
+ORD10581,2025-12-19,Vijayawada,Groceries,Sunflower Oil 1L,4,165,15,561,UPI
+ORD10582,2025-12-19,Vijayawada,Groceries,Tea Powder 500g,2,240,0,480,Cash
+ORD10583,2025-12-20,Chennai,Groceries,Basmati Rice 5kg,4,649,0,2596,Cash
 ORD10584,2025-12-20,Bengaluru,Clothing,Cotton Kurta,6,899,5,5124.3,UPI
 ORD10585,2025-12-20,Vijayawada,Home,Bedsheet,2,699,15,1188.3,Card
-ORD10586,2025-12-21,Vijayawada,Groceries,Tea Powder 500g,7,240,0,1680.0,Card
+ORD10586,2025-12-21,Vijayawada,Groceries,Tea Powder 500g,7,240,0,1680,Card
 ORD10587,2025-12-21,Vijayawada,Clothing,T-Shirt,2,449,10,808.2,Cash
 ORD10588,2025-12-22,Guntur,Groceries,Basmati Rice 5kg,4,649,10,2336.4,UPI
-ORD10589,2025-12-22,Chennai,Home,Bedsheet,2,699,0,1398.0,UPI
-ORD10590,2025-12-22,Vijayawada,Home,Steel Bottle,5,349,0,1745.0,Card
+ORD10589,2025-12-22,Chennai,Home,Bedsheet,2,699,0,1398,UPI
+ORD10590,2025-12-22,Vijayawada,Home,Steel Bottle,5,349,0,1745,Card
 ORD10591,2025-12-23,Guntur,Electronics,Earbuds,2,1499,10,2698.2,UPI
-ORD10592,2025-12-23,Chennai,Home,Steel Bottle,1,349,0,349.0,UPI
-ORD10593,2025-12-25,Bengaluru,Electronics,Keyboard,4,799,0,3196.0,Card
+ORD10592,2025-12-23,Chennai,Home,Steel Bottle,1,349,0,349,UPI
+ORD10593,2025-12-25,Bengaluru,Electronics,Keyboard,4,799,0,3196,Card
 ORD10594,2025-12-25,Bengaluru,Groceries,Basmati Rice 5kg,7,649,10,4088.7,Card
 ORD10595,2025-12-27,Visakhapatnam,Home,LED Bulb,7,129,15,767.55,UPI
 ORD10596,2025-12-29,Chennai,Home,LED Bulb,1,129,10,116.1,Cash
-ORD10597,2025-12-30,Chennai,Clothing,T-Shirt,5,449,0,2245.0,Card
+ORD10597,2025-12-30,Chennai,Clothing,T-Shirt,5,449,0,2245,Card
 ORD10598,2025-12-30,Chennai,Groceries,Basmati Rice 5kg,7,649,5,4315.85,Cash
-ORD10599,2025-12-30,Visakhapatnam,Home,LED Bulb,3,129,,387.0,Cash
-ORD10600,2025-12-31,Guntur,Home,Steel Bottle,6,349,,2094.0,UPI
+ORD10599,2025-12-30,Visakhapatnam,Home,LED Bulb,3,129,,387,Cash
+ORD10600,2025-12-31,Guntur,Home,Steel Bottle,6,349,,2094,UPI
