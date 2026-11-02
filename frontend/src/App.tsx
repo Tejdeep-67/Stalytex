@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Papa from 'papaparse'
+import { parseWorkbook } from './lib/excel'
 import { parseCsvText } from './lib/parse'
 import * as XLSX from 'xlsx'
 import Dashboard from './components/Dashboard'
@@ -138,18 +139,6 @@ function App() {
     return parsedRows.slice(start, start + pageSize)
   }, [parsedRows, page, pageSize])
 
-  const normalizeHeaders = (candidateHeaders: string[]) => {
-    const used = new Set<string>()
-    return candidateHeaders.map((header, index) => {
-      let normalized = String(header || `Column ${index + 1}`).trim() || `Column ${index + 1}`
-      while (used.has(normalized)) {
-        normalized = `${normalized} ${used.size + 1}`
-      }
-      used.add(normalized)
-      return normalized
-    })
-  }
-
   const handleUpload = async (file: File) => {
     setErrorMessage('')
     try {
@@ -165,21 +154,10 @@ function App() {
         parsedRows = parsed.rows
         warnings = parsed.warnings
       } else if (lowerName.endsWith('.xls') || lowerName.endsWith('.xlsx')) {
-        const buffer = await file.arrayBuffer()
-        const workbook = XLSX.read(buffer, { type: 'array' })
-        const sheet = workbook.Sheets[workbook.SheetNames[0]]
-        const raw = XLSX.utils.sheet_to_json<string[]>(sheet, { header: 1, defval: '' })
-        if (!raw.length) {
-          throw new Error('Workbook contains no data')
-        }
-        parsedHeaders = raw[0].map((header) => String(header || '').trim() || 'Column')
-        parsedRows = raw.slice(1).map((row) => {
-          const normalized: Row = {}
-          parsedHeaders.forEach((header, index) => {
-            normalized[header] = String(row[index] ?? '')
-          })
-          return normalized
-        })
+        const parsed = parseWorkbook(await file.arrayBuffer())
+        parsedHeaders = parsed.headers
+        parsedRows = parsed.rows
+        warnings = parsed.warnings
       } else {
         throw new Error('Unsupported file type. Use CSV or XLSX.')
       }
@@ -188,21 +166,10 @@ function App() {
         throw new Error('File must include a header row.')
       }
 
-      const sourceHeaders = parsedHeaders.map((header) => String(header || '').trim() || 'Column')
-      const cleanedHeaders = normalizeHeaders(sourceHeaders)
-      const rowsWithHeaders = parsedRows.map((row) => {
-        const next: Row = {}
-        sourceHeaders.forEach((sourceHeader, index) => {
-          const finalHeader = cleanedHeaders[index]
-          next[finalHeader] = row[sourceHeader] ?? ''
-        })
-        return next
-      })
-
       setFileName(name)
       setFileSize(formatBytes(file.size))
-      setHeaders(cleanedHeaders)
-      setRows(rowsWithHeaders)
+      setHeaders(parsedHeaders)
+      setRows(parsedRows)
       setErrorMessage(warnings.join(' '))
       setSearchQuery('')
       setFilterColumn('')
