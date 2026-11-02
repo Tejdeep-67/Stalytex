@@ -1,29 +1,59 @@
-import { useMemo, useState } from 'react'
-import initSqlJs from 'sql.js'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import initSqlJs, { Database, SqlJsStatic } from 'sql.js'
 import sqlWasm from 'sql.js/dist/sql-wasm.wasm?url'
 import { Row } from '../types'
+import { buildDatabase, ColumnType, QueryResult, runQuery } from '../lib/sql'
 
 type Props = {
   headers: string[]
   rows: Row[]
 }
 
+const MAX_SHOWN = 500
+
+let sqlModule: Promise<SqlJsStatic> | null = null
+const loadSql = () => {
+  if (!sqlModule) sqlModule = initSqlJs({ locateFile: () => sqlWasm })
+  return sqlModule
+}
+
+const quote = (name: string) => (/^[A-Za-z_][A-Za-z0-9_]*$/.test(name) ? name : `"${name.replace(/"/g, '""')}"`)
+
 export default function SQLCompiler({ headers, rows }: Props) {
   const [query, setQuery] = useState('SELECT * FROM dataset LIMIT 10;')
-  const [resultRows, setResultRows] = useState<Record<string, string | number>[]>([])
+  const [result, setResult] = useState<QueryResult | null>(null)
   const [status, setStatus] = useState('Load a dataset, then run SQL against it in-browser.')
   const [errorMessage, setErrorMessage] = useState('')
   const [isRunning, setIsRunning] = useState(false)
+  const [types, setTypes] = useState<ColumnType[]>([])
+  const dbRef = useRef<{ db: Database; rows: Row[]; headers: string[] } | null>(null)
 
   const canRunQuery = headers.length > 0
 
+  // the table is rebuilt lazily, only when the data changed since the last run
+  useEffect(() => () => {
+    dbRef.current?.db.close()
+    dbRef.current = null
+  }, [])
+
   const sampleQuery = useMemo(() => {
     return headers.length
-      ? `SELECT ${headers.map((header) => `"${header}"`).join(', ')} FROM dataset LIMIT 10;`
+      ? `SELECT ${headers.slice(0, 6).map(quote).join(', ')}\nFROM dataset\nLIMIT 10;`
       : 'SELECT * FROM dataset LIMIT 10;'
   }, [headers])
 
-  const runQuery = async () => {
+  const getDatabase = async () => {
+    const cached = dbRef.current
+    if (cached && cached.rows === rows && cached.headers === headers) return cached.db
+    cached?.db.close()
+    const SQL = await loadSql()
+    const built = buildDatabase(SQL, headers, rows)
+    dbRef.current = { db: built.db, rows, headers }
+    setTypes(built.types)
+    return built.db
+  }
+
+  const run = async () => {
     if (!headers.length) {
       setStatus('Upload a dataset first so the SQL engine has a table to query.')
       return
@@ -34,40 +64,21 @@ export default function SQLCompiler({ headers, rows }: Props) {
     setErrorMessage('')
 
     try {
-      const SQL = await initSqlJs({
-        locateFile: () => sqlWasm,
-      })
+      const db = await getDatabase()
+      const started = performance.now()
+      const output = runQuery(db, query.trim() || sampleQuery)
+      const ms = Math.round(performance.now() - started)
+      setResult(output)
 
-      const db = new SQL.Database()
-      const safeHeaders = headers.map((header) => header.replace(/"/g, '""'))
-      db.exec(`CREATE TABLE dataset (${safeHeaders.map((header) => `"${header}" TEXT`).join(', ')});`)
-
-      rows.forEach((row) => {
-        const values = headers.map((originalHeader) => {
-          const value = row[originalHeader] ?? ''
-          return `'${String(value).replace(/'/g, "''")}'`
-        })
-        db.exec(`INSERT INTO dataset ("${safeHeaders.join('", "')}") VALUES (${values.join(', ')});`)
-      })
-
-      const sql = (query.trim() || sampleQuery).trim()
-      const results = db.exec(sql)
-
-      if (!results.length) {
-        setResultRows([])
-        setStatus('Query executed successfully but returned no result set.')
-        return
+      if (!output) {
+        setStatus(`Query ran in ${ms} ms but returned no rows.`)
+      } else {
+        const count = output.values.length
+        const shown = count > MAX_SHOWN ? ` (showing the first ${MAX_SHOWN})` : ''
+        setStatus(`${count.toLocaleString()} row${count === 1 ? '' : 's'} in ${ms} ms${shown}.`)
       }
-
-      const [result] = results
-      const output = result.values.map((valueRow) => Object.fromEntries(
-        result.columns.map((column, index) => [column, valueRow[index] ?? ''])
-      )) as Record<string, string | number>[]
-
-      setResultRows(output)
-      setStatus(`Query returned ${output.length} row${output.length === 1 ? '' : 's'}.`)
     } catch (error) {
-      setResultRows([])
+      setResult(null)
       setStatus('SQL execution failed.')
       setErrorMessage(error instanceof Error ? error.message : 'Unknown SQL error.')
     } finally {
@@ -79,57 +90,79 @@ export default function SQLCompiler({ headers, rows }: Props) {
     <section className="panel-card">
       <div className="section-header">
         <p className="eyebrow">SQL</p>
-        <h2>Run SQL online on your uploaded data</h2>
+        <h2>Run SQL on your uploaded data</h2>
         <p className="section-copy">
-          Execute browser-side SQL queries against the current dataset and inspect the returned rows directly in the app.
+          Your data is loaded into an in-browser SQLite table called <code>dataset</code> (or <code>data</code>).
+          Number columns are stored as numbers and empty cells as NULL. Queries don&apos;t change the table in the editor.
         </p>
       </div>
 
-      <div className="sql-shell" style={{ marginTop: '22px' }}>
+      {headers.length ? (
+        <div className="schema-list" aria-label="Table columns">
+          {headers.map((header, index) => (
+            <button type="button" key={header} className="schema-chip" title="Insert column name" onClick={() => setQuery((q) => `${q.trimEnd()} ${quote(header)}`)}>
+              {header}
+              {types[index] ? <span>{types[index].toLowerCase()}</span> : null}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      <div className="sql-shell">
         <label>
           SQL query
           <textarea
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            rows={8}
+            onKeyDown={(event) => {
+              if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+                event.preventDefault()
+                void run()
+              }
+            }}
+            rows={7}
+            spellCheck={false}
             placeholder="SELECT * FROM dataset LIMIT 10;"
           />
         </label>
-        <div className="input-row" style={{ marginTop: '12px' }}>
-          <button type="button" className="primary-action" onClick={runQuery} disabled={isRunning || !canRunQuery}>
+        <div className="input-row sql-actions">
+          <button type="button" className="primary-action" onClick={run} disabled={isRunning || !canRunQuery}>
             {isRunning ? 'Running…' : 'Run SQL'}
           </button>
-          <button type="button" className="secondary-action" onClick={() => setQuery(sampleQuery)}>
+          <button type="button" className="secondary-action" onClick={() => setQuery(sampleQuery)} disabled={!canRunQuery}>
             Load sample query
           </button>
+          <small className="hint">Ctrl + Enter runs the query</small>
         </div>
-        <p className="warning-text" style={{ marginTop: '10px' }}>{status}</p>
-        {errorMessage ? <p className="warning-text" style={{ marginTop: '6px' }}>{errorMessage}</p> : null}
+        <p className="status-text" role="status">{status}</p>
+        {errorMessage ? <p className="warning-text">{errorMessage}</p> : null}
       </div>
 
-      <div className="table-shell" style={{ marginTop: '18px' }}>
-        {resultRows.length ? (
-          <table className="data-table">
+      <div className="table-shell">
+        {result && result.values.length ? (
+          <table className="data-table result-table">
             <thead>
               <tr>
-                {Object.keys(resultRows[0]).map((key) => (
-                  <th key={key}>{key}</th>
+                {result.columns.map((column, index) => (
+                  <th key={`${column}-${index}`}>{column}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {resultRows.map((row, index) => (
-                <tr key={`sql-result-${index}`}>
-                  {Object.keys(row).map((key) => (
-                    <td key={`${index}-${key}`}>{String(row[key] ?? '')}</td>
+              {result.values.slice(0, MAX_SHOWN).map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((value, colIndex) => (
+                    <td key={colIndex} className={value === null ? 'null-cell' : undefined}>
+                      {value === null ? 'NULL' : String(value)}
+                    </td>
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
         ) : (
-          <div className="empty-section" style={{ minHeight: '180px' }}>
-            <p>Run a query to see the output table here.</p>
+          <div className="empty-section">
+            <p>{canRunQuery ? 'Run a query to see the output table here.' : 'Upload a dataset to start querying.'}</p>
           </div>
         )}
       </div>
