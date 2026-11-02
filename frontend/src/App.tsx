@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Papa from 'papaparse'
+import { parseCsvText } from './lib/parse'
 import * as XLSX from 'xlsx'
 import Dashboard from './components/Dashboard'
 import DatasetEditor from './components/DatasetEditor'
@@ -153,31 +154,16 @@ function App() {
     setErrorMessage('')
     try {
       const name = file.name
-      setFileName(name)
-      setFileSize(formatBytes(file.size))
       const lowerName = name.toLowerCase()
       let parsedHeaders: string[] = []
       let parsedRows: Row[] = []
+      let warnings: string[] = []
 
       if (lowerName.endsWith('.csv')) {
-        const content = await file.text()
-        const result = Papa.parse<Record<string, string>>(content, {
-          header: true,
-          skipEmptyLines: true,
-        })
-
-        if (result.errors.length) {
-          throw new Error(result.errors[0].message)
-        }
-
-        parsedHeaders = result.meta.fields?.map(String) ?? []
-        parsedRows = (result.data as Row[]).map((row) => {
-          const normalized: Row = {}
-          Object.entries(row).forEach(([key, value]) => {
-            normalized[String(key)] = value == null ? '' : String(value)
-          })
-          return normalized
-        })
+        const parsed = parseCsvText(await file.text())
+        parsedHeaders = parsed.headers
+        parsedRows = parsed.rows
+        warnings = parsed.warnings
       } else if (lowerName.endsWith('.xls') || lowerName.endsWith('.xlsx')) {
         const buffer = await file.arrayBuffer()
         const workbook = XLSX.read(buffer, { type: 'array' })
@@ -213,8 +199,11 @@ function App() {
         return next
       })
 
+      setFileName(name)
+      setFileSize(formatBytes(file.size))
       setHeaders(cleanedHeaders)
       setRows(rowsWithHeaders)
+      setErrorMessage(warnings.join(' '))
       setSearchQuery('')
       setFilterColumn('')
       setFilterValue('')
@@ -223,9 +212,8 @@ function App() {
       setChartPreviewReady(false)
       setActiveSection('dashboard')
     } catch (error) {
+      // keep whatever dataset was loaded before, just show the error
       setErrorMessage(error instanceof Error ? error.message : 'Upload failed. Please try another file.')
-      setHeaders([])
-      setRows([])
     }
   }
 
