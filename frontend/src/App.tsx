@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import Papa from 'papaparse'
 import { parseWorkbook } from './lib/excel'
 import { parseCsvText } from './lib/parse'
+import { visibleRowIndexes } from './lib/table'
 import * as XLSX from 'xlsx'
 import Dashboard from './components/Dashboard'
 import DatasetEditor from './components/DatasetEditor'
@@ -96,37 +97,12 @@ function App() {
     }
   }, [headers])
 
-  const parsedRows = useMemo(() => {
-    let workingRows = rows
+  const visibleIndexes = useMemo(
+    () => visibleRowIndexes(rows, headers, { search: searchQuery, filterColumn, filterValue, sortField, sortDirection }),
+    [rows, headers, searchQuery, filterColumn, filterValue, sortField, sortDirection],
+  )
 
-    if (searchQuery.trim()) {
-      const normalized = searchQuery.toLowerCase()
-      workingRows = workingRows.filter((row) => headers.some((key) => row[key]?.toString().toLowerCase().includes(normalized)))
-    }
-
-    if (filterColumn && filterValue.trim()) {
-      const normalized = filterValue.toLowerCase()
-      workingRows = workingRows.filter((row) => row[filterColumn]?.toString().toLowerCase().includes(normalized))
-    }
-
-    if (sortField && headers.includes(sortField)) {
-      const direction = sortDirection === 'asc' ? 1 : -1
-      workingRows = [...workingRows].sort((a, b) => {
-        const aValue = a[sortField] ?? ''
-        const bValue = b[sortField] ?? ''
-        const aNum = Number(aValue)
-        const bNum = Number(bValue)
-        if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) {
-          return (aNum - bNum) * direction
-        }
-        return aValue.toString().localeCompare(bValue.toString()) * direction
-      })
-    }
-
-    return workingRows
-  }, [rows, headers, searchQuery, filterColumn, filterValue, sortField, sortDirection])
-
-  const totalPages = Math.max(1, Math.ceil(parsedRows.length / pageSize))
+  const totalPages = Math.max(1, Math.ceil(visibleIndexes.length / pageSize))
 
   useEffect(() => {
     if (page > totalPages) {
@@ -134,10 +110,10 @@ function App() {
     }
   }, [page, totalPages])
 
-  const paginatedRows = useMemo(() => {
+  const pageIndexes = useMemo(() => {
     const start = (page - 1) * pageSize
-    return parsedRows.slice(start, start + pageSize)
-  }, [parsedRows, page, pageSize])
+    return visibleIndexes.slice(start, start + pageSize)
+  }, [visibleIndexes, page, pageSize])
 
   const handleUpload = async (file: File) => {
     setErrorMessage('')
@@ -194,8 +170,12 @@ function App() {
 
   const addRow = () => {
     if (!headers.length) return
-    setRows((current) => [...current, headers.reduce<Row>((row, header) => ({ ...row, [header]: '' }), {})])
-    setPage(totalPages)
+    const emptyRow = Object.fromEntries(headers.map((header) => [header, ''])) as Row
+    setRows((current) => [...current, emptyRow])
+    // clear search so the new (empty) row is actually visible, it sorts to the end
+    setSearchQuery('')
+    setFilterValue('')
+    setPage(Math.ceil((rows.length + 1) / pageSize))
   }
 
   const removeRow = (index: number) => {
@@ -220,6 +200,11 @@ function App() {
   }
 
   const removeColumn = (header: string) => {
+    if (sortField === header) setSortField('')
+    if (filterColumn === header) {
+      setFilterColumn('')
+      setFilterValue('')
+    }
     setHeaders((current) => current.filter((key) => key !== header))
     setRows((current) => current.map((row) => {
       const next = { ...row }
@@ -283,10 +268,11 @@ function App() {
             <DatasetEditor
               headers={headers}
               rows={rows}
+              pageIndexes={pageIndexes}
+              visibleCount={visibleIndexes.length}
               page={page}
               pageSize={pageSize}
               totalPages={totalPages}
-              paginatedRows={paginatedRows}
               sortField={sortField}
               sortDirection={sortDirection}
               searchQuery={searchQuery}
@@ -303,7 +289,6 @@ function App() {
                   setSortDirection('asc')
                 }
               }}
-              onToggleSortDirection={() => setSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'))}
               onChangePage={setPage}
               onChangePageSize={(value) => { setPageSize(value); setPage(1) }}
               onAddRow={addRow}
@@ -312,8 +297,6 @@ function App() {
               onRemoveColumn={removeColumn}
               onUpdateCell={updateCell}
               onResetFilters={resetFilters}
-              headersAvailable={headers}
-              errorMessage={errorMessage}
             />
           )}
           {activeSection === 'statistics' && (
