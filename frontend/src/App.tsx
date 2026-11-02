@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { parseWorkbook } from './lib/excel'
 import { buildCsv, buildWorkbook, downloadBlob } from './lib/exportData'
 import { parseCsvText } from './lib/parse'
@@ -6,7 +6,7 @@ import { visibleRowIndexes } from './lib/table'
 import Dashboard from './components/Dashboard'
 import DatasetEditor from './components/DatasetEditor'
 import ExportPanel from './components/ExportPanel'
-import Sidebar from './components/Sidebar'
+import Sidebar, { navItems, SectionKey } from './components/Sidebar'
 import Statistics from './components/Statistics'
 import SQLCompiler from './components/SQLCompiler'
 import Visualizations from './components/Visualizations'
@@ -14,9 +14,6 @@ import { ChartType, DatasetSummary, Row } from './types'
 import { Aggregate } from './lib/chartData'
 import { isNumericColumn } from './lib/numbers'
 
-const sectionLabels = ['dashboard', 'editor', 'statistics', 'visualizations', 'sql', 'export'] as const
-
-type SectionKey = (typeof sectionLabels)[number]
 
 const formatBytes = (value: number) => {
   if (value === 0) return '0 B'
@@ -50,6 +47,7 @@ function App() {
   const [fileName, setFileName] = useState('')
   const [fileSize, setFileSize] = useState('')
   const [activeSection, setActiveSection] = useState<SectionKey>('dashboard')
+  const [navOpen, setNavOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [sortField, setSortField] = useState('')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
@@ -273,17 +271,48 @@ function App() {
   }
 
   const datasetLoaded = headers.length > 0
+  const closeNav = useCallback(() => setNavOpen(false), [])
 
   return (
     <div className="workspace-layout">
-      <Sidebar activeSection={activeSection} onSelectSection={setActiveSection} />
+      <Sidebar
+        activeSection={activeSection}
+        onSelectSection={(section) => {
+          setActiveSection(section)
+          setNavOpen(false)
+        }}
+        open={navOpen}
+        onClose={closeNav}
+        datasetName={fileName}
+      />
       <main className="workspace-main">
+        <header className="mobile-bar">
+          <button
+            type="button"
+            className="menu-button"
+            onClick={() => setNavOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={navOpen}
+            aria-controls="sidebar"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <div className="mobile-title">
+            <strong>Stalytex</strong>
+            <span>{navItems.find((item) => item.key === activeSection)?.title}</span>
+          </div>
+        </header>
+
         <div className="topbar">
           <div>
             <p className="eyebrow">Stalytex Workspace</p>
             <h1>Browser-first analytics studio</h1>
           </div>
-          <div className="status-chip">{datasetLoaded ? 'Dataset ready' : 'Upload a dataset to begin'}</div>
+          <div className={`status-chip ${datasetLoaded ? 'ready' : ''}`} title={fileName}>
+            {datasetLoaded ? `${rows.length.toLocaleString()} rows · ${headers.length} columns` : 'Upload a dataset to begin'}
+          </div>
         </div>
 
         <div className="page-panel">
