@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { parseWorkbook } from './lib/excel'
-import { buildCsv, buildWorkbook, downloadBlob } from './lib/exportData'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { buildCsv, downloadBlob } from './lib/exportData'
 import { parseCsvText } from './lib/parse'
 import { visibleRowIndexes } from './lib/table'
 import Dashboard from './components/Dashboard'
@@ -8,11 +7,9 @@ import DatasetEditor from './components/DatasetEditor'
 import ExportPanel from './components/ExportPanel'
 import Sidebar, { navItems, SectionKey } from './components/Sidebar'
 import Statistics from './components/Statistics'
-import SQLCompiler from './components/SQLCompiler'
-import Visualizations from './components/Visualizations'
 import { ToastStack, useToasts } from './components/Toasts'
 import { ChartType, DatasetSummary, Row } from './types'
-import { Aggregate } from './lib/chartData'
+import type { Aggregate } from './lib/chartData'
 import { isNumericColumn } from './lib/numbers'
 
 
@@ -22,6 +19,10 @@ const formatBytes = (value: number) => {
   const index = Math.floor(Math.log(value) / Math.log(1024))
   return `${(value / 1024 ** index).toFixed(1)} ${units[index]}`
 }
+
+// charts (recharts) and sql.js are the heavy parts, load them when they're needed
+const Visualizations = lazy(() => import('./components/Visualizations'))
+const SQLCompiler = lazy(() => import('./components/SQLCompiler'))
 
 const defaultChartType: ChartType = 'bar'
 
@@ -40,6 +41,16 @@ function pickChartColumns(headers: string[], rows: Row[]) {
   const x = category ?? headers[0] ?? ''
   const y = measures.find((h) => h !== x) ?? numeric.find((h) => h !== x) ?? ''
   return { x, y }
+}
+
+function SectionLoading() {
+  return (
+    <section className="panel-card loading-card" aria-busy="true">
+      <div className="skeleton short" />
+      <div className="skeleton" />
+      <div className="skeleton tall" />
+    </section>
+  )
 }
 
 function App() {
@@ -145,6 +156,8 @@ function App() {
       if (lowerName.endsWith('.csv')) {
         parsed = parseCsvText(await file.text())
       } else if (lowerName.endsWith('.xls') || lowerName.endsWith('.xlsx')) {
+        // the excel library is big, so it's only downloaded when someone opens an xlsx
+        const { parseWorkbook } = await import('./lib/excel')
         parsed = parseWorkbook(await file.arrayBuffer())
       } else {
         throw new Error('Unsupported file type. Use CSV or XLSX.')
@@ -272,8 +285,9 @@ function App() {
     push({ kind: 'success', text: `Saved ${baseName()}.csv` })
   }
 
-  const exportXlsx = () => {
+  const exportXlsx = async () => {
     if (!headers.length) return
+    const { buildWorkbook } = await import('./lib/exportXlsx')
     downloadBlob(buildWorkbook(headers, rows), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', `${baseName()}.xlsx`)
     push({ kind: 'success', text: `Saved ${baseName()}.xlsx` })
   }
@@ -355,7 +369,7 @@ function App() {
             <h1>Browser-first analytics studio</h1>
           </div>
           <div className={`status-chip ${datasetLoaded ? 'ready' : ''}`} title={fileName}>
-            {datasetLoaded ? `${rows.length.toLocaleString()} rows · ${headers.length} columns` : 'Upload a dataset to begin'}
+            {datasetLoaded ? `${rows.length.toLocaleString()} rows · ${headers.length} column${headers.length === 1 ? '' : 's'}` : 'Upload a dataset to begin'}
           </div>
         </div>
 
@@ -414,32 +428,41 @@ function App() {
             />
           )}
           {/* kept mounted (off screen) so the chart can still be exported from the Export page */}
-          <div
-            key={activeSection === 'visualizations' ? 'viz-on' : 'viz-off'}
-            ref={vizSlotRef}
-            className={activeSection === 'visualizations' ? 'viz-slot' : 'viz-slot offscreen-chart'}
-            aria-hidden={activeSection !== 'visualizations'}
-          >
-            <Visualizations
-              headers={headers}
-              rows={rows}
-              chartType={chartType}
-              xAxis={xAxis}
-              yAxis={yAxis}
-              aggregate={aggregate}
-              color={color}
-              chartRef={chartRef}
-              onSetChartType={setChartType}
-              onSetXAxis={setXAxis}
-              onSetYAxis={setYAxis}
-              onSetAggregate={setAggregate}
-              onSetColor={setColor}
-              onDownload={downloadChart}
-              isExporting={isExporting}
-            />
-          </div>
+          {(datasetLoaded || activeSection === 'visualizations') && (
+            <Suspense fallback={activeSection === 'visualizations' ? <SectionLoading /> : null}>
+              <div
+                key={activeSection === 'visualizations' ? 'viz-on' : 'viz-off'}
+                ref={(el) => {
+                  vizSlotRef.current = el
+                  if (el) el.inert = activeSection !== 'visualizations'
+                }}
+                className={activeSection === 'visualizations' ? 'viz-slot' : 'viz-slot offscreen-chart'}
+                aria-hidden={activeSection !== 'visualizations'}
+              >
+                <Visualizations
+                  headers={headers}
+                  rows={rows}
+                  chartType={chartType}
+                  xAxis={xAxis}
+                  yAxis={yAxis}
+                  aggregate={aggregate}
+                  color={color}
+                  chartRef={chartRef}
+                  onSetChartType={setChartType}
+                  onSetXAxis={setXAxis}
+                  onSetYAxis={setYAxis}
+                  onSetAggregate={setAggregate}
+                  onSetColor={setColor}
+                  onDownload={downloadChart}
+                  isExporting={isExporting}
+                />
+              </div>
+            </Suspense>
+          )}
           {activeSection === 'sql' && (
-            <SQLCompiler headers={headers} rows={rows} />
+            <Suspense fallback={<SectionLoading />}>
+              <SQLCompiler headers={headers} rows={rows} />
+            </Suspense>
           )}
           {activeSection === 'export' && (
             <ExportPanel

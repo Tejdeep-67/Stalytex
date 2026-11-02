@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import * as XLSX from 'xlsx'
-import { buildCsv, buildWorkbook } from './exportData'
+import { buildCsv } from './exportData'
+import { buildWorkbook } from './exportXlsx'
 import { parseCsvText } from './parse'
 import { parseWorkbook } from './excel'
 
