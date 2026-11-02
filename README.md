@@ -1,48 +1,66 @@
 # Stalytex
 
-Stalytex is a browser-first analytics studio that allows you to upload, inspect, clean, visualize, and query datasets (CSV, XLSX) entirely in your browser without any backend dependencies.
+A browser-based analytics workspace for CSV and Excel files. Upload a dataset, clean and edit it, look at
+column statistics, build charts and run SQL queries on it. Everything runs in the browser, so the data never
+leaves your computer and there is no backend to set up.
+
+![Stalytex dashboard](screenshots/dashboard.png)
+
+## Why I built it
+
+For small datasets I kept switching between Excel, a SQL tool and a charting tool. I wanted one simple place
+to upload a file and quickly answer basic questions about it.
 
 ## Features
 
-- **Dataset Editor:** Sort, filter, search, and update table values. Add or delete rows and columns dynamically.
-- **Visualizations:** Build charts (Bar, Line, Area, Pie, Scatter, Histogram) from your dataset in real-time. Map columns to X and Y axes and customize colors.
-- **SQL Compiler:** Run SQL queries directly against your uploaded data using a browser-side SQLite engine (`sql.js`).
-- **Statistics:** View column-level analytics, such as min/max, average, unique values, and empty cells.
-- **Exporting:** Download the cleaned dataset as CSV or XLSX, and export your visualizations as PNG images.
+- **Upload:** CSV (parsed with PapaParse) or XLSX (SheetJS), with a summary of rows, columns, numeric columns,
+  empty cells and file size.
+- **Dataset editor:** search, sort, filter by column, paginate, edit cells, add or delete rows and columns.
+- **Statistics:** per-column min, max, average, unique values and empty cells.
+- **Visualizations:** bar, line, area, pie, scatter and histogram charts (Recharts). Pick the X and Y columns and the colour.
+- **SQL:** the uploaded table is loaded into an in-browser SQLite database (sql.js), so you can run normal SQL
+  queries like `SELECT country, SUM(revenue) FROM data GROUP BY country`.
+- **Export:** download the edited data as CSV or XLSX, and charts as PNG (html2canvas).
 
-## Setup
+## Tech stack
 
-This project uses [Vite](https://vitejs.dev/) with React and TypeScript.
+React 18, TypeScript, Vite, Recharts, PapaParse, SheetJS (xlsx), sql.js, html2canvas
 
-### Installation
+## Run locally
 
-1. Navigate to the `frontend` directory:
-   ```bash
-   cd frontend
-   ```
+```bash
+git clone https://github.com/Tejdeep-67/Stalytex.git
+cd Stalytex/frontend
+npm install
+npm run dev
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+Then open the URL shown in the terminal (usually http://localhost:5173).
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+To make a production build: `npm run build` (output in `frontend/dist`). The repo has a `netlify.toml`
+for deploying on Netlify.
 
-4. Open your browser to `http://localhost:4173/` (or the port provided in the terminal).
+## Project structure
 
-## Tech Stack
+```
+frontend/src/
+├── App.tsx                 # file upload, state, page switching
+├── components/
+│   ├── Dashboard.tsx       # upload + dataset summary
+│   ├── DatasetEditor.tsx   # table editing, sort, filter
+│   ├── Statistics.tsx      # column metrics
+│   ├── Visualizations.tsx  # charts
+│   ├── SQLCompiler.tsx     # sql.js queries
+│   ├── ExportPanel.tsx     # CSV / XLSX / PNG export
+│   └── Sidebar.tsx
+└── types.ts
+```
 
-- React 18
-- TypeScript
-- Vite
-- Recharts (Charting)
-- PapaParse (CSV Parsing)
-- XLSX (Excel Parsing)
-- SQL.js (In-browser SQL)
-- html2canvas (Image Export)
+## Limitations
+
+- Everything is in memory, so very large files (hundreds of MB) will be slow.
+- Changes are not saved between sessions; export the file to keep them.
 
 ## License
+
 MIT
