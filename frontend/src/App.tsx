@@ -12,6 +12,8 @@ import Statistics from './components/Statistics'
 import SQLCompiler from './components/SQLCompiler'
 import Visualizations from './components/Visualizations'
 import { ChartType, DatasetSummary, Row } from './types'
+import { Aggregate } from './lib/chartData'
+import { isNumericColumn } from './lib/numbers'
 
 const sectionLabels = ['dashboard', 'editor', 'statistics', 'visualizations', 'sql', 'export'] as const
 
@@ -25,6 +27,23 @@ const formatBytes = (value: number) => {
 }
 
 const defaultChartType: ChartType = 'bar'
+
+// default chart: a text column with a handful of categories on X, the first number column on Y
+function pickChartColumns(headers: string[], rows: Row[]) {
+  const sample = rows.slice(0, 1000)
+  const numeric = headers.filter((h) => isNumericColumn(sample.map((r) => r[h])))
+  // an id / row number column makes a useless default Y ("sum of order_id")
+  const looksLikeId = (h: string) => /(^|[_\s-])(id|no|number)$/i.test(h) || new Set(sample.map((r) => r[h])).size === sample.length
+  const measures = numeric.filter((h) => !looksLikeId(h))
+  const category = headers.find((h) => {
+    if (numeric.includes(h)) return false
+    const unique = new Set(sample.map((r) => r[h]))
+    return unique.size > 1 && unique.size <= 30
+  })
+  const x = category ?? headers[0] ?? ''
+  const y = measures.find((h) => h !== x) ?? numeric.find((h) => h !== x) ?? ''
+  return { x, y }
+}
 
 function App() {
   const [headers, setHeaders] = useState<string[]>([])
@@ -45,7 +64,8 @@ function App() {
   const [yAxis, setYAxis] = useState('')
   const [color, setColor] = useState('#ff7a00')
   const [errorMessage, setErrorMessage] = useState('')
-  const [chartPreviewReady, setChartPreviewReady] = useState(false)
+  const [aggregate, setAggregate] = useState<Aggregate>('sum')
+  const [isExporting, setIsExporting] = useState(false)
   const chartRef = useRef<HTMLDivElement | null>(null)
 
   const datasetSummary: DatasetSummary = useMemo(() => {
@@ -83,8 +103,8 @@ function App() {
       setXAxis(headers[0] || '')
     }
 
-    if (!headers.includes(yAxis)) {
-      setYAxis(headers[1] || headers[0] || '')
+    if (yAxis && !headers.includes(yAxis)) {
+      setYAxis('')
     }
 
     if (!headers.includes(statsColumn)) {
@@ -152,7 +172,10 @@ function App() {
       setFilterValue('')
       setSortField('')
       setPage(1)
-      setChartPreviewReady(false)
+      const defaults = pickChartColumns(parsedHeaders, parsedRows)
+      setXAxis(defaults.x)
+      setYAxis(defaults.y)
+      setStatsColumn(defaults.y || parsedHeaders[0])
       setActiveSection('dashboard')
     } catch (error) {
       // keep whatever dataset was loaded before, just show the error
@@ -236,14 +259,31 @@ function App() {
     link.click()
   }
 
+  const baseName = () => fileName.replace(/\.[^.]+$/, '') || 'dataset'
+
   const downloadChart = async () => {
-    if (!chartRef.current) return
-    const html2canvas = (await import('html2canvas')).default
-    const canvas = await html2canvas(chartRef.current, { backgroundColor: '#ffffff', scale: 2 })
-    const link = document.createElement('a')
-    link.href = canvas.toDataURL('image/png')
-    link.download = 'chart-export.png'
-    link.click()
+    if (!chartRef.current || isExporting) return
+    setIsExporting(true)
+    try {
+      const html2canvas = (await import('html2canvas')).default
+      const canvas = await html2canvas(chartRef.current, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        logging: false,
+        // the clone restarts css animations, which made the png come out faded
+        onclone: (doc) => {
+          const style = doc.createElement('style')
+          style.textContent = '* { animation: none !important; transition: none !important; }'
+          doc.head.appendChild(style)
+        },
+      })
+      const link = document.createElement('a')
+      link.href = canvas.toDataURL('image/png')
+      link.download = `${baseName()}-${chartType}-chart.png`
+      link.click()
+    } finally {
+      setIsExporting(false)
+    }
   }
 
   const datasetLoaded = headers.length > 0
@@ -307,21 +347,24 @@ function App() {
               onSelectColumn={setStatsColumn}
             />
           )}
-          <div className={activeSection === 'visualizations' ? '' : 'visually-hidden'}>
+          {/* kept mounted (off screen) so the chart can still be exported from the Export page */}
+          <div className={activeSection === 'visualizations' ? '' : 'offscreen-chart'} aria-hidden={activeSection !== 'visualizations'}>
             <Visualizations
               headers={headers}
               rows={rows}
               chartType={chartType}
               xAxis={xAxis}
               yAxis={yAxis}
+              aggregate={aggregate}
               color={color}
               chartRef={chartRef}
               onSetChartType={setChartType}
               onSetXAxis={setXAxis}
               onSetYAxis={setYAxis}
+              onSetAggregate={setAggregate}
               onSetColor={setColor}
-              chartPreviewReady={chartPreviewReady}
-              onGenerateChart={() => setChartPreviewReady(true)}
+              onDownload={downloadChart}
+              isExporting={isExporting}
             />
           </div>
           {activeSection === 'sql' && (
@@ -333,7 +376,7 @@ function App() {
               onDownloadCsv={exportCsv}
               onDownloadXlsx={exportXlsx}
               onDownloadChart={downloadChart}
-              chartReady={Boolean(chartRef.current)}
+              chartReady={datasetLoaded}
             />
           )}
         </div>

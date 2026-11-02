@@ -5,6 +5,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   Legend,
   Line,
   LineChart,
@@ -16,9 +17,9 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  Cell,
 } from 'recharts'
-import { ChartType, Row } from '../types'
+import { Row } from '../types'
+import { Aggregate, buildChart, ChartType, niceLabel, palette } from '../lib/chartData'
 
 type Props = {
   headers: string[]
@@ -26,21 +27,16 @@ type Props = {
   chartType: ChartType
   xAxis: string
   yAxis: string
+  aggregate: Aggregate
   color: string
-  chartRef: React.RefObject<HTMLDivElement>
+  chartRef: RefObject<HTMLDivElement>
   onSetChartType: (type: ChartType) => void
   onSetXAxis: (value: string) => void
   onSetYAxis: (value: string) => void
+  onSetAggregate: (value: Aggregate) => void
   onSetColor: (value: string) => void
-  chartPreviewReady: boolean
-  onGenerateChart: () => void
-}
-
-type ChartPoint = {
-  name: string
-  value: number
-  x?: string | number
-  y?: number
+  onDownload: () => void
+  isExporting: boolean
 }
 
 const chartTypes: Array<{ value: ChartType; label: string }> = [
@@ -52,138 +48,101 @@ const chartTypes: Array<{ value: ChartType; label: string }> = [
   { value: 'histogram', label: 'Histogram' },
 ]
 
+const axisTick = { fontSize: 12, fill: '#6d7c99' }
+const tickFormatter = (value: unknown) => (typeof value === 'number' ? niceLabel(value) : String(value))
+const shortLabel = (value: unknown) => {
+  const text = String(value)
+  return text.length > 14 ? `${text.slice(0, 13)}…` : text
+}
+
 export default function Visualizations({
   headers,
   rows,
   chartType,
   xAxis,
   yAxis,
+  aggregate,
   color,
   chartRef,
   onSetChartType,
   onSetXAxis,
   onSetYAxis,
+  onSetAggregate,
   onSetColor,
-  chartPreviewReady,
-  onGenerateChart,
+  onDownload,
+  isExporting,
 }: Props) {
-  const chartData = useMemo(() => {
-    if (!xAxis) return [] as ChartPoint[]
+  const result = useMemo(() => buildChart(rows, chartType, xAxis, yAxis, aggregate), [rows, chartType, xAxis, yAxis, aggregate])
+  const colors = useMemo(() => palette(color, Math.max(result.points.length, 1)), [color, result.points.length])
 
-    const rawRows = rows.filter((row) => row[xAxis] !== undefined && row[xAxis]?.toString().trim() !== '')
+  const usesY = chartType !== 'histogram'
+  const usesAggregate = chartType === 'bar' || chartType === 'line' || chartType === 'area' || chartType === 'pie'
+  const hasData = chartType === 'scatter' ? result.scatter.length > 0 : result.points.length > 0
+  const yName = chartType === 'histogram' ? 'Count' : aggregate === 'count' || !yAxis ? 'Rows' : `${aggregate === 'avg' ? 'Average' : 'Sum'} of ${yAxis}`
+  const manyLabels = result.points.length > 8
 
-    if (!rawRows.length) return [] as ChartPoint[]
+  const xAxisProps = {
+    dataKey: 'name',
+    tick: axisTick,
+    tickFormatter: shortLabel,
+    interval: 'preserveStartEnd' as const,
+    angle: manyLabels ? -30 : 0,
+    textAnchor: manyLabels ? ('end' as const) : ('middle' as const),
+    height: manyLabels ? 70 : 30,
+  }
+  const yAxisProps = { tick: axisTick, tickFormatter, width: 64 }
+  const tooltip = <Tooltip formatter={(value: number) => [value.toLocaleString(undefined, { maximumFractionDigits: 2 }), yName]} />
 
-    if (chartType === 'histogram') {
-      const values = rawRows
-        .map((row) => Number(row[xAxis]))
-        .filter((value) => !Number.isNaN(value))
-      if (!values.length) return []
-      const bucketCount = 8
-      const min = Math.min(...values)
-      const max = Math.max(...values)
-      const range = max - min || 1
-      const step = range / bucketCount
-      const bins = Array.from({ length: bucketCount }, (_, index) => ({
-        label: `${(min + step * index).toFixed(1)} - ${(min + step * (index + 1)).toFixed(1)}`,
-        count: 0,
-      }))
-      values.forEach((value) => {
-        const index = Math.min(bucketCount - 1, Math.floor((value - min) / step))
-        bins[index].count += 1
-      })
-      return bins.map((bucket) => ({ name: bucket.label, value: bucket.count }))
-    }
-
-    const groups = new Map<string, number>()
-    rawRows.forEach((row) => {
-      const xValue = row[xAxis]?.toString() || 'Unknown'
-      const rawY = yAxis && row[yAxis] !== undefined && row[yAxis]?.toString().trim() !== ''
-        ? Number(row[yAxis])
-        : 1
-      const yValue = Number.isFinite(rawY) ? rawY : 1
-      groups.set(xValue, (groups.get(xValue) ?? 0) + yValue)
-    })
-
-    const entries = Array.from(groups.entries()).map(([name, value]) => ({ name, value }))
-    if (chartType === 'pie') {
-      const sorted = entries.sort((a, b) => b.value - a.value)
-      const top = sorted.slice(0, 8)
-      if (sorted.length > 8) {
-        const otherValue = sorted.slice(8).reduce((sum, item) => sum + item.value, 0)
-        top.push({ name: 'Other', value: otherValue })
-      }
-      return top
-    }
-
-    return entries
-  }, [chartType, headers, rows, xAxis, yAxis])
-
-  const chartSupported = headers.length > 0
-  const canRenderChart = chartSupported && chartData.length > 0
-  const yAxisRequired = chartType !== 'histogram'
-
-  const chartContent = (
-    chartType === 'bar' ? (
-      <BarChart data={chartData}>
-        <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="value" fill={color} />
-      </BarChart>
-    ) : chartType === 'line' ? (
-      <LineChart data={chartData}>
-        <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="value" stroke={color} strokeWidth={3} dot={{ r: 4 }} />
+  const chartContent =
+    chartType === 'line' ? (
+      <LineChart data={result.points}>
+        <CartesianGrid strokeDasharray="4 4" stroke="#e7ebf3" />
+        <XAxis {...xAxisProps} />
+        <YAxis {...yAxisProps} />
+        {tooltip}
+        <Line type="monotone" dataKey="value" name={yName} stroke={color} strokeWidth={2.5} dot={result.points.length < 60} animationDuration={600} />
       </LineChart>
     ) : chartType === 'area' ? (
-      <AreaChart data={chartData}>
+      <AreaChart data={result.points}>
         <defs>
           <linearGradient id="areaColor" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={color} stopOpacity={0.85} />
-            <stop offset="95%" stopColor={color} stopOpacity={0.1} />
+            <stop offset="5%" stopColor={color} stopOpacity={0.7} />
+            <stop offset="95%" stopColor={color} stopOpacity={0.05} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Area type="monotone" dataKey="value" stroke={color} fill="url(#areaColor)" />
+        <CartesianGrid strokeDasharray="4 4" stroke="#e7ebf3" />
+        <XAxis {...xAxisProps} />
+        <YAxis {...yAxisProps} />
+        {tooltip}
+        <Area type="monotone" dataKey="value" name={yName} stroke={color} strokeWidth={2} fill="url(#areaColor)" animationDuration={600} />
       </AreaChart>
     ) : chartType === 'pie' ? (
       <PieChart>
-        <Tooltip />
-        <Legend />
-        <Pie data={chartData} dataKey="value" nameKey="name" innerRadius={80} outerRadius={150} fill={color} label>
-          {chartData.map((entry, index) => (
-            <Cell key={`cell-${entry.name}-${index}`} fill={color} />
+        {tooltip}
+        <Legend verticalAlign="bottom" />
+        <Pie data={result.points} dataKey="value" nameKey="name" innerRadius="45%" outerRadius="75%" paddingAngle={1} animationDuration={600}>
+          {result.points.map((entry, index) => (
+            <Cell key={entry.name} fill={colors[index]} stroke="#fff" />
           ))}
         </Pie>
       </PieChart>
     ) : chartType === 'scatter' ? (
       <ScatterChart>
-        <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" type="category" />
-        <YAxis />
-        <Tooltip />
-        <Scatter data={chartData} fill={color} />
+        <CartesianGrid strokeDasharray="4 4" stroke="#e7ebf3" />
+        <XAxis type="number" dataKey="x" name={xAxis} tick={axisTick} tickFormatter={tickFormatter} domain={['auto', 'auto']} />
+        <YAxis type="number" dataKey="y" name={yAxis} {...yAxisProps} domain={['auto', 'auto']} />
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+        <Scatter data={result.scatter} fill={color} fillOpacity={0.6} isAnimationActive={result.scatter.length < 500} />
       </ScatterChart>
     ) : (
-      <BarChart data={chartData}>
-        <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="value" fill={color} />
+      <BarChart data={result.points}>
+        <CartesianGrid strokeDasharray="4 4" stroke="#e7ebf3" vertical={false} />
+        <XAxis {...xAxisProps} />
+        <YAxis {...yAxisProps} />
+        {tooltip}
+        <Bar dataKey="value" name={yName} fill={color} radius={[6, 6, 0, 0]} animationDuration={600} />
       </BarChart>
     )
-  )
 
   return (
     <section className="panel-card">
@@ -191,59 +150,92 @@ export default function Visualizations({
         <p className="eyebrow">Visualizations</p>
         <h2>Build charts from your dataset</h2>
         <p className="section-copy">
-          Choose chart type, map columns to axes, and preview your visualization in real time.
+          Pick a chart type and the columns to plot. The preview updates as you change the options.
         </p>
       </div>
 
-      <div className="chart-toolbar" style={{ marginTop: '20px' }}>
-        <label>
-          Chart type
-          <select value={chartType} onChange={(event) => onSetChartType(event.target.value as ChartType)}>
+      {!headers.length ? (
+        <div className="empty-section">
+          <p>Upload a dataset to start making charts.</p>
+        </div>
+      ) : (
+        <>
+          <div className="chart-types" role="tablist" aria-label="Chart type">
             {chartTypes.map((item) => (
-              <option key={item.value} value={item.value}>{item.label}</option>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={chartType === item.value}
+                key={item.value}
+                className={chartType === item.value ? 'active' : ''}
+                onClick={() => onSetChartType(item.value)}
+              >
+                {item.label}
+              </button>
             ))}
-          </select>
-        </label>
-        <label>
-          X axis
-          <select value={xAxis} onChange={(event) => onSetXAxis(event.target.value)}>
-            <option value="">Select X</option>
-            {headers.map((header) => (
-              <option key={header} value={header}>{header}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Y axis
-          <select value={yAxis} onChange={(event) => onSetYAxis(event.target.value)} disabled={!yAxisRequired}>
-            <option value="">Select Y</option>
-            {headers.map((header) => (
-              <option key={header} value={header}>{header}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Accent color
-          <input type="color" value={color} onChange={(event) => onSetColor(event.target.value)} />
-        </label>
-        <button type="button" className="primary-action" onClick={onGenerateChart} style={{ alignSelf: 'end' }}>
-          Generate chart
-        </button>
-      </div>
+          </div>
 
-      <div ref={chartRef} className="chart-wrapper" style={{ marginTop: '24px' }}>
-        {canRenderChart && chartPreviewReady ? (
-          <div className="chart-preview">
-            <ResponsiveContainer width="100%" height={420}>
-              {chartContent}
-            </ResponsiveContainer>
+          <div className="chart-toolbar">
+            <label className="field">
+              {chartType === 'histogram' ? 'Column' : 'X axis'}
+              <select value={xAxis} onChange={(event) => onSetXAxis(event.target.value)}>
+                {headers.map((header) => (
+                  <option key={header} value={header}>{header}</option>
+                ))}
+              </select>
+            </label>
+            {usesY ? (
+              <label className="field">
+                Y axis
+                <select value={yAxis} onChange={(event) => onSetYAxis(event.target.value)}>
+                  {chartType !== 'scatter' ? <option value="">(count rows)</option> : null}
+                  {headers.map((header) => (
+                    <option key={header} value={header}>{header}</option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+            {usesAggregate ? (
+              <label className="field">
+                Combine values
+                <select value={aggregate} onChange={(event) => onSetAggregate(event.target.value as Aggregate)} disabled={!yAxis}>
+                  <option value="sum">Sum</option>
+                  <option value="avg">Average</option>
+                  <option value="count">Count</option>
+                </select>
+              </label>
+            ) : null}
+            <label className="field color-field">
+              Colour
+              <input type="color" value={color} onChange={(event) => onSetColor(event.target.value)} />
+            </label>
           </div>
-        ) : (
-          <div className="empty-section" style={{ minHeight: '320px' }}>
-            <p>{chartSupported ? 'Pick the columns you want, then click Generate chart to render the visualization.' : 'Upload a dataset to enable chart creation.'}</p>
+
+          <div ref={chartRef} className="chart-wrapper">
+            {hasData ? (
+              <div className="chart-preview fade-in" key={chartType}>
+                <p className="chart-title">
+                  {chartType === 'histogram' ? `Distribution of ${xAxis}` : chartType === 'scatter' ? `${yAxis} vs ${xAxis}` : `${yName} by ${xAxis}`}
+                </p>
+                <ResponsiveContainer width="100%" height={380}>
+                  {chartContent}
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <div className="empty-section">
+                <p>{result.note || 'Nothing to plot for these columns yet. Try a different X / Y.'}</p>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+
+          <div className="chart-footer">
+            <small className="hint">{hasData ? result.note : ''}</small>
+            <button type="button" className="secondary-action" onClick={onDownload} disabled={!hasData || isExporting}>
+              {isExporting ? 'Saving…' : 'Download PNG'}
+            </button>
+          </div>
+        </>
+      )}
     </section>
   )
 }
