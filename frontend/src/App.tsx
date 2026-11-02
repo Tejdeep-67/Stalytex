@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import Papa from 'papaparse'
 import { parseWorkbook } from './lib/excel'
+import { buildCsv, buildWorkbook, downloadBlob } from './lib/exportData'
 import { parseCsvText } from './lib/parse'
 import { visibleRowIndexes } from './lib/table'
-import * as XLSX from 'xlsx'
 import Dashboard from './components/Dashboard'
 import DatasetEditor from './components/DatasetEditor'
 import ExportPanel from './components/ExportPanel'
@@ -238,25 +237,12 @@ function App() {
 
   const exportCsv = () => {
     if (!headers.length) return
-    const csv = Papa.unparse({ fields: headers, data: rows.map((row) => headers.map((header) => row[header] ?? '')) })
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
-    const link = document.createElement('a')
-    link.href = URL.createObjectURL(blob)
-    link.download = `${fileName.replace(/\.[^.]+$/, '') || 'dataset'}.csv`
-    link.click()
+    downloadBlob(buildCsv(headers, rows), 'text/csv;charset=utf-8', `${baseName()}.csv`)
   }
 
   const exportXlsx = () => {
     if (!headers.length) return
-    const worksheet = XLSX.utils.json_to_sheet(rows, { header: headers })
-    const workbook = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Dataset')
-    const wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' })
-    const blob = new Blob([wbout], { type: 'application/octet-stream' })
-    const link = document.createElement('a')
-    link.href = URL.createObjectURL(blob)
-    link.download = `${fileName.replace(/\.[^.]+$/, '') || 'dataset'}.xlsx`
-    link.click()
+    downloadBlob(buildWorkbook(headers, rows), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', `${baseName()}.xlsx`)
   }
 
   const baseName = () => fileName.replace(/\.[^.]+$/, '') || 'dataset'
