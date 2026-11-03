@@ -357,6 +357,7 @@ function App() {
             <span />
             <span />
           </button>
+          <img className="mobile-mark" src="/favicon.svg" width={30} height={30} alt="" />
           <div className="mobile-title">
             <strong>Stalytex</strong>
             <span>{navItems.find((item) => item.key === activeSection)?.title}</span>

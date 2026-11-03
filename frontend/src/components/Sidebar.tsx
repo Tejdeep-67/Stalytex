@@ -48,7 +48,7 @@ export default function Sidebar({ activeSection, onSelectSection, open, onClose,
       <div className={`drawer-backdrop ${open ? 'show' : ''}`} onClick={onClose} aria-hidden="true" />
       <aside id="sidebar" ref={panelRef} className={`sidebar ${open ? 'open' : ''}`} aria-label="Sections">
         <div className="logo">
-          <div className="logo-circle">S</div>
+          <img className="logo-mark" src="/favicon.svg" width={42} height={42} alt="" />
           <div className="logo-title">
             <strong>Stalytex</strong>
             <span>Analytics Workspace</span>

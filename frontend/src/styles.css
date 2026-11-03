@@ -74,15 +74,12 @@ a {
   gap: 14px;
 }
 
-.logo-circle {
+.logo-mark {
   width: 42px;
   height: 42px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #ff8c21 0%, #ffb347 100%);
-  display: grid;
-  place-items: center;
-  color: white;
-  font-weight: 700;
+  border-radius: 13px;
+  flex: none;
+  box-shadow: 0 8px 18px -10px rgba(255, 122, 0, 0.7);
 }
 
 .logo-title {
@@ -1476,6 +1473,11 @@ body.no-scroll {
     height: 2px;
     border-radius: 2px;
     background: var(--text-strong);
+  }
+
+  .mobile-mark {
+    flex: none;
+    border-radius: 9px;
   }
 
   .mobile-title {
